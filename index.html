@@ -33,7 +33,7 @@
     }
 
     .step {
-        display: none; /* PENTING: Awalnya tersembunyi */
+        display: none;
         background: rgba(255,255,255,0.65);
         padding: 18px;
         border-radius: 15px;
@@ -54,21 +54,43 @@
         to   { opacity:1; transform:scale(1); }
     }
 
+    /* Gaya dasar tombol */
     button {
         margin-top: 12px;
         padding: 10px 20px;
-        background: #ff6699;
         border:none;
         border-radius:10px;
         color:white;
         cursor:pointer;
         font-size: 16px;
+        transition: all 0.2s ease;
     }
 
-    button:hover {
-        background:#ff3366;
-        transform: scale(1.05);
-    }
+    /* Gaya untuk tombol NAVIGASI (Lanjut, Terusin, Tampilkan) */
+    .nav-button {
+        /* Menggunakan gradien yang lebih cerah dan menarik */
+        background: linear-gradient(90deg, #ff6699 0%, #ff3366 100%); 
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-button:hover {
+        background: linear-gradient(90deg, #ff3366 0%, #ff6699 100%);
+        transform: scale(1.05);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Gaya untuk tombol KIRIM (di Step 9) */
+    .submit-button {
+        background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%); /* Warna Biru */
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .submit-button:hover {
+        background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+        transform: scale(1.05);
+    }
 
     #fotoDia {
         width: 160px;
@@ -84,50 +106,50 @@
 
 <img id="box" src="kado.gif">
 
-<audio id="musik" src="happy-birthday.mp3"></audio>
+<audio id="musik" src="happy-birthday.mp3" style="display:none;"></audio> 
 
-<img id="fotoDia" src="foto-dia.jpg">
+<img id="fotoDia" src="foto-dia.jpg" style="display:none;"> 
 
 <div id="step1" class="step">
     <h2>✨ Selamat Ulang Tahun ✨</h2>
     <p>Hari ini hari kamu. Semoga kamu sehat terus, bahagia terus, dan dapet banyak hal-hal baik yang kamu tunggu. Makasih ya udah jadi orang yang selalu bikin hidup kerasa lebih hangat.</p>
-    <button onclick="next('step1','step2')">Lanjut</button>
+    <button onclick="next('step1','step2')" class="nav-button">Lanjut</button>
 </div>
 
 <div id="step2" class="step">
     <p>Aku masukin foto kamu di sini ya 😅 jangan marah, niatnya cuma biar momen ini kerasa lebih hangat.</p>
-    <button onclick="next('step2','step3')">Lanjut</button>
+    <button onclick="next('step2','step3')" class="nav-button">Lanjut</button>
 </div>
 
 <div id="step3" class="step">
     <p>Aku tau hidup capek… tapi kamu hebat banget bisa sampai sejauh ini.</p>
-    <button onclick="next('step3','step4')">Terusin</button>
+    <button onclick="next('step3','step4')" class="nav-button">Terusin</button>
 </div>
 
 <div id="step4" class="step">
     <p>Kamu jarang update, jarang nongol… tapi setiap kamu bikin story absurd kayak “stay dimana? stay strong” itu bikin aku senyum sendiri hahaha.</p>
-    <button onclick="next('step4','step5')">Lanjut</button>
+    <button onclick="next('step4','step5')" class="nav-button">Lanjut</button>
 </div>
 
 <div id="step5" class="step">
     <p>Dan kalau kamu gabut, mabar mancing bareng aku juga gas kok… daripada kamu mancing sendirian tiap malam 🤣</p>
-    <button onclick="next('step5','step6')">Lanjut</button>
+    <button onclick="next('step5','step6')" class="nav-button">Lanjut</button>
 </div>
 
 <div id="step6" class="step">
     <p>Oh iya soal kado… nyusul ya. Tapi clue-nya kecil, lucu, dan sesuai hobi kamu 🎣</p>
-    <button onclick="next('step6','step7')">Tampilkan</button>
+    <button onclick="next('step6','step7')" class="nav-button">Tampilkan</button>
 </div>
 
 <div id="step7" class="step">
     <h3>🎣 Mini Fishing Rod Keychain 🎣</h3>
     <p>Biar tiap kali kamu lihat ini… kamu inget ada seseorang yang selalu gas mabar kapan pun 😄</p>
-    <button onclick="next('step7','step8')">Lanjut</button>
+    <button onclick="next('step7','step8')" class="nav-button">Lanjut</button>
 </div>
 
 <div id="step8" class="step">
     <p>Dan… kalo nanti waktunya pas, mungkin kita bisa makan bareng, atau cuma cerita-cerita tentang capek jadi dewasa.</p>
-    <button onclick="next('step8','step9')">Terakhir</button>
+    <button onclick="next('step8','step9')" class="nav-button">Terakhir</button>
 </div>
 
 <div id="step9" class="step">
@@ -140,7 +162,7 @@
 
         <input id="roblox" name="Roblox" placeholder="ID Roblox" style="padding:10px;border-radius:8px;border:1px solid #ccc;width:80%;"><br><br>
 
-        <button type="submit">Kirim</button>
+        <button type="submit" class="submit-button">Kirim</button>
     </form>
     
     <p id="hasil" style="margin-top:10px;font-weight:bold;"></p>
@@ -151,30 +173,30 @@
 document.getElementById("box").onclick = function() {
     const boxElement = this;
     boxElement.classList.add("fade-out-scale");
+    
     setTimeout(() => {
         boxElement.style.display = "none";
+        
+        document.getElementById("fotoDia").style.display = "block"; 
+        document.getElementById("musik").play(); 
+        
         document.getElementById("step1").style.display = "block"; 
-        document.getElementById("fotoDia").style.display = "block";
-        document.getElementById("musik").play();
     }, 500); 
 };
 
 // Fungsi navigasi antar step
 function next(hide, show) {
-    // Sembunyikan Step saat ini
     document.getElementById(hide).style.display = "none";
-    // Tampilkan Step berikutnya
     document.getElementById(show).style.display = "block";
 }
 
-// Tambahan: Pastikan semua step tersembunyi saat halaman dimuat
+// Memastikan semua step tersembunyi saat halaman dimuat
 document.addEventListener("DOMContentLoaded", function() {
     let steps = document.querySelectorAll('.step');
     steps.forEach(function(el) {
         el.style.display = 'none';
     });
 });
-
 </script>
 
 </body>
