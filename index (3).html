@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+<style>
+    body {
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        padding: 20px;
+        overflow-x: hidden;
+        color: #333;
+    }
+
+    #box {
+        cursor: pointer;
+        margin-top: 80px;
+        animation: float 2s infinite ease-in-out;
+        width: 200px;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+
+    .step {
+        display: none;
+        background: rgba(255,255,255,0.65);
+        padding: 18px;
+        border-radius: 15px;
+        margin-top: 20px;
+        animation: fadeIn .6s ease;
+        backdrop-filter: blur(5px);
+    }
+
+    @keyframes fadeIn {
+        from { opacity:0; transform:scale(0.9); }
+        to   { opacity:1; transform:scale(1); }
+    }
+
+    button {
+        margin-top: 12px;
+        padding: 10px 20px;
+        background: #ff6699;
+        border:none;
+        border-radius:10px;
+        color:white;
+        cursor:pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background:#ff3366;
+        transform: scale(1.05);
+    }
+
+    #fotoDia {
+        width: 160px;
+        border-radius: 15px;
+        margin-bottom: 15px;
+        display:none;
+    }
+</style>
+</head>
+<body>
+
+<h2>🎁 Ada hadiah buat kamu… klik kadonya! 🎁</h2>
+
+<img id="box" src="https://i.ibb.co/y8H9f7x/giftbox.gif">
+
+<audio id="musik" src="instrument-hbd.mp3"></audio>
+
+<img id="fotoDia" src="foto-dia.jpg">
+
+<!-- STEP 1 -->
+<div id="step1" class="step">
+    <h2>✨ Selamat Ulang Tahun ✨</h2>
+    <p>Hari ini spesial, dan ya… aku ingat.</p>
+    <button onclick="next('step1','step2')">Lanjut</button>
+</div>
+
+<!-- STEP 2 -->
+<div id="step2" class="step">
+    <p>Aku masukin foto kamu di sini ya 😅  
+    jangan marah, niatnya cuma biar momen ini kerasa lebih hangat.</p>
+    <button onclick="next('step2','step3')">Lanjut</button>
+</div>
+
+<!-- STEP 3 -->
+<div id="step3" class="step">
+    <p>Aku tau hidup capek… tapi kamu hebat banget bisa sampai sejauh ini.</p>
+    <button onclick="next('step3','step4')">Terusin</button>
+</div>
+
+<!-- STEP 4 -->
+<div id="step4" class="step">
+    <p>Kamu jarang update, jarang nongol…  
+    tapi setiap kamu bikin story absurd kayak “stay dimana? stay strong”  
+    itu bikin aku senyum sendiri hahaha.</p>
+    <button onclick="next('step4','step5')">Lanjut</button>
+</div>
+
+<!-- STEP 5 -->
+<div id="step5" class="step">
+    <p>Dan kalau kamu gabut,  
+    mabar mancing bareng aku juga gas kok…  
+    daripada kamu mancing sendirian tiap malam 🤣</p>
+    <button onclick="next('step5','step6')">Lanjut</button>
+</div>
+
+<!-- STEP 6 -->
+<div id="step6" class="step">
+    <p>Oh iya soal kado…  
+    nyusul ya.  
+    Tapi clue-nya kecil, lucu, dan sesuai hobi kamu 🎣</p>
+    <button onclick="next('step6','step7')">Tampilkan</button>
+</div>
+
+<!-- STEP 7 -->
+<div id="step7" class="step">
+    <h3>🎣 Mini Fishing Rod Keychain 🎣</h3>
+    <p>Biar tiap kali kamu lihat ini…  
+    kamu inget ada seseorang yang selalu gas mabar kapan pun 😄</p>
+    <button onclick="next('step7','step8')">Lanjut</button>
+</div>
+
+<!-- STEP 8 -->
+<div id="step8" class="step">
+    <p>Dan… kalo nanti waktunya pas,  
+    mungkin kita bisa makan bareng,  
+    atau cuma cerita-cerita tentang capek jadi dewasa.</p>
+    <button onclick="next('step8','step9')">Terakhir</button>
+</div>
+
+<!-- STEP 9 (TUKER WA/ROBLOX) -->
+<div id="step9" class="step">
+    <h3>Sebelum nutup…</h3>
+    <p>Boleh tukeran WA / ID Roblox?  
+    Gapaksa kok, beneran… cuma biar komunikasi gak hilang aja 😄</p>
+
+    <input id="wa" placeholder="Nomor WhatsApp" style="padding:10px;border-radius:8px;border:1px solid #ccc;width:80%;"><br><br>
+
+    <input id="roblox" placeholder="ID Roblox" style="padding:10px;border-radius:8px;border:1px solid #ccc;width:80%;"><br><br>
+
+    <button onclick="kirimData()">Kirim</button>
+
+    <p id="hasil" style="margin-top:10px;font-weight:bold;"></p>
+</div>
+
+<script>
+document.getElementById("box").onclick = function() {
+    this.style.display = "none";
+    document.getElementById("step1").style.display = "block";
+    document.getElementById("fotoDia").style.display = "block";
+    document.getElementById("musik").play();
+};
+
+function next(hide, show){
+    document.getElementById(hide).style.display = "none";
+    document.getElementById(show).style.display = "block";
+}
+
+function kirimData(){
+    let data = {
+        wa: document.getElementById("wa").value,
+        roblox: document.getElementById("roblox").value,
+        pesan: "Birthday form",
+        timestamp: new Date().toISOString()
+    };
+
+    fetch("WEBHOOK_URL_KAMU", {
+        method: "POST",
+        body: JSON.stringify(data)
+    })
+    .then(r => r.text())
+    .then(res => {
+        document.getElementById("hasil").innerHTML = "Terkirim! Makasih ya 😊";
+    })
+    .catch(err => {
+        document.getElementById("hasil").innerHTML = "Gagal, coba ulang ya.";
+    });
+}
+</script>
+
+</body>
+</html>
