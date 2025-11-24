@@ -32,8 +32,9 @@
         transform: scale(0.1) !important;
     }
 
+    /* PENTING: display: none; memastikan step tidak muncul di awal */
     .step {
-        display: none;
+        display: none; 
         background: rgba(255,255,255,0.65);
         padding: 18px;
         border-radius: 15px;
@@ -43,11 +44,10 @@
         text-align: center;
     }
 
-    /* PERBAIKAN PENTING UNTUK MENGATASI BUG SPASI */
     .step p {
         text-align: center; 
         line-height: 1.5;
-        white-space: normal; /* Menghindari konflik dengan baris baru di kode */
+        white-space: normal;
     }
 
     @keyframes fadeIn {
@@ -148,26 +148,23 @@
 </div>
 
 <script>
-// Fungsi Kado Klik (Interaktif) - Membuat kado pop-out
+// Fungsi Kado Klik (Interaktif)
 document.getElementById("box").onclick = function() {
     const boxElement = this;
     boxElement.classList.add("fade-out-scale");
     setTimeout(() => {
         boxElement.style.display = "none";
-        document.getElementById("step1").style.display = "block";
+        document.getElementById("step1").style.display = "block"; // Munculkan Step 1
         document.getElementById("fotoDia").style.display = "block";
         document.getElementById("musik").play();
     }, 500); 
 };
 
-// Fungsi navigasi antar step
+// FUNGSI NEXT() YANG DIPERBAIKI (Step-by-step)
 function next(hide, show) {
-    // SEMUA step di-hide dulu
-    let steps = document.querySelectorAll('.step');
-    steps.forEach(function(el){
-        el.style.display = 'none';
-    });
-    // Step yang diminta di-show
+    // Sembunyikan Step saat ini
+    document.getElementById(hide).style.display = "none";
+    // Tampilkan Step berikutnya
     document.getElementById(show).style.display = "block";
 }
 
