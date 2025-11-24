@@ -18,7 +18,7 @@
         margin-top: 80px;
         animation: float 2s infinite ease-in-out;
         width: 200px;
-        /* PENTING: Tambahkan transisi agar animasi fade-out berjalan mulus */
+        /* Tambahan: Transisi untuk efek pop-out */
         transition: opacity 0.5s ease, transform 0.5s ease; 
     }
 
@@ -27,8 +27,8 @@
         50% { transform: translateY(-10px); }
         100% { transform: translateY(0); }
     }
-    
-    /* PENTING: CSS Baru untuk membuat kado menghilang */
+
+    /* CSS Baru: Untuk membuat kado menghilang dengan efek skala */
     .fade-out-scale {
         opacity: 0 !important;
         transform: scale(0.1) !important;
@@ -71,6 +71,32 @@
         margin-bottom: 15px;
         display:none;
     }
+
+    /* CSS Baru: Efek Daun Jatuh */
+    .leaf {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #a3c48a; 
+        border-radius: 50% 0% 50% 50%;
+        transform-origin: 50% 50%;
+        animation: fall linear infinite;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    /* Animasi jatuh dan berputar */
+    @keyframes fall {
+        0% {
+            transform: translate(0, -100px) rotateZ(0deg);
+            opacity: 1;
+        }
+        100% {
+            /* Menggunakan var(--x-end) yang diatur di JavaScript */
+            transform: translate(var(--x-end), 100vh) rotateZ(720deg); 
+            opacity: 0.5;
+        }
+    }
 </style>
 </head>
 <body>
@@ -109,6 +135,129 @@
     <button onclick="next('step4','step5')">Lanjut</button>
 </div>
 
+<div id="step5" class="step">
+    <p>Dan kalau kamu gabut,  
+    mabar mancing bareng aku juga gas kok…  
+    daripada kamu mancing sendirian tiap malam 🤣</p>
+    <button onclick="next('step5','step6')">Lanjut</button>
+</div>
+
+<div id="step6" class="step">
+    <p>Oh iya soal kado…  
+    nyusul ya.  
+    Tapi clue-nya kecil, lucu, dan sesuai hobi kamu 🎣</p>
+    <button onclick="next('step6','step7')">Tampilkan</button>
+</div>
+
+<div id="step7" class="step">
+    <h3>🎣 Mini Fishing Rod Keychain 🎣</h3>
+    <p>Biar tiap kali kamu lihat ini…  
+    kamu inget ada seseorang yang selalu gas mabar kapan pun 😄</p>
+    <button onclick="next('step7','step8')">Lanjut</button>
+</div>
+
+<div id="step8" class="step">
+    <p>Dan… kalo nanti waktunya pas,  
+    mungkin kita bisa makan bareng,  
+    atau cuma cerita-cerita tentang capek jadi dewasa.</p>
+    <button onclick="next('step8','step9')">Terakhir</button>
+</div>
+
+<div id="step9" class="step">
+    <h3>Sebelum nutup…</h3>
+    <p>Boleh tukeran WA / ID Roblox?  
+    Gapaksa kok, beneran… cuma biar komunikasi gak hilang aja 😄</p>
+
+    <input id="wa" placeholder="Nomor WhatsApp" style="padding:10px;border-radius:8px;border:1px solid #ccc;width:80%;"><br><br>
+
+    <input id="roblox" placeholder="ID Roblox" style="padding:10px;border-radius:8px;border:1px solid #ccc;width:80%;"><br><br>
+
+    <button onclick="kirimData()">Kirim</button>
+
+    <p id="hasil" style="margin-top:10px;font-weight:bold;"></p>
+</div>
+
+<script>
+// JavaScript Baru: Fungsi Kado Klik (Interaktif)
+document.getElementById("box").onclick = function() {
+    const boxElement = this;
+    
+    // 1. Tambahkan kelas untuk memulai animasi menghilang
+    boxElement.classList.add("fade-out-scale");
+
+    // 2. Setelah animasi selesai (500ms), sembunyikan kado dan lanjutkan alur
+    setTimeout(() => {
+        boxElement.style.display = "none";
+        document.getElementById("step1").style.display = "block";
+        document.getElementById("fotoDia").style.display = "block";
+        createLeaves(); // PANGGIL FUNGSI DAUN JATUH
+        document.getElementById("musik").play();
+    }, 500); 
+};
+
+function next(hide, show){
+    document.getElementById(hide).style.display = "none";
+    document.getElementById(show).style.display = "block";
+}
+
+// Fungsi JavaScript Baru: Membuat Daun Jatuh
+function createLeaves() {
+    const numLeaves = 15; // Jumlah daun yang akan jatuh
+    const container = document.body; 
+
+    for (let i = 0; i < numLeaves; i++) {
+        const leaf = document.createElement('div');
+        leaf.classList.add('leaf');
+        
+        // Atur posisi dan kecepatan acak
+        const startX = Math.random() * window.innerWidth;
+        const endXOffset = (Math.random() - 0.5) * 400; 
+        const animationDuration = 5 + Math.random() * 10;
+        const animationDelay = Math.random() * 5;
+
+        leaf.style.left = `${startX}px`;
+        leaf.style.animationDuration = `${animationDuration}s`;
+        leaf.style.animationDelay = `${animationDelay}s`;
+        leaf.style.setProperty('--x-end', `${endXOffset}px`); 
+        
+        container.appendChild(leaf);
+
+        // Hapus daun setelah selesai
+        setTimeout(() => {
+            leaf.remove();
+        }, (animationDuration + animationDelay) * 1000);
+    }
+}
+
+
+function kirimData(){
+    let data = {
+        wa: document.getElementById("wa").value,
+        roblox: document.getElementById("roblox").value,
+        pesan: "Birthday form",
+        timestamp: new Date().toISOString()
+    };
+
+    // PERHATIAN: Pastikan URL ini adalah URL webhook Anda yang valid
+    fetch("https://webhook.site/08c3d8a4-0c5f-4a00-9e90-2e4c84a0d91d", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(r => r.text())
+    .then(res => {
+        document.getElementById("hasil").innerHTML = "Terkirim! Makasih ya 😊";
+    })
+    .catch(err => {
+        document.getElementById("hasil").innerHTML = "Gagal, coba ulang ya. (Error: " + err.message + ")";
+    });
+}
+</script>
+
+</body>
+</html>
 <div id="step5" class="step">
     <p>Dan kalau kamu gabut,  
     mabar mancing bareng aku juga gas kok…  
