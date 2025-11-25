@@ -6,206 +6,287 @@
 <title>Happy Birthday Ratu Fish-it 🎣🎂</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-    body {
-        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); 
-        font-family: 'Poppins', sans-serif;
-        text-align: center;
-        padding: 20px;
-        overflow-x: hidden;
-        color: #333;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-        box-sizing: border-box;
-    }
+:root {
+    --main-grad1: #fcb045;
+    --main-grad2: #fd1d1d;
+    --main-grad3: #833ab4;
+    --accent1: #1fd1f9;
+    --accent2: #fa68b6;
+    --accent3: #ffe156;
+    --button-pink: #ff4eac;
+    --button-blue: #3e8cff;
+    --shadow: 0 10px 25px 0 rgba(39, 29, 109,0.13);
+    --shadow-strong: 0 6px 32px 0 rgba(145, 103, 255, 0.17);
+}
 
-    h2 {
-        color: #5a2c7a; 
-        font-weight: 700;
-        margin-bottom: 20px;
-    }
+body {
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(125deg, var(--main-grad3) 0%, var(--main-grad1) 30%, var(--main-grad2) 70%, var(--accent1) 100%); 
+    background-size: 400% 400%;
+    animation: gradient-move 13s ease-in-out infinite;
+    font-family: 'Poppins', sans-serif;
+    color: #25203a;
+    text-align: center;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    h3 {
-        color: #7b4397; 
-        font-weight: 600;
-        margin-bottom: 15px;
+@keyframes gradient-move {
+    0% {background-position: 0 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0 50%;}
+}
+
+h2 {
+    background: linear-gradient(110deg, var(--main-grad2), var(--main-grad3), var(--accent1));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    margin-bottom: 18px;
+    letter-spacing: 1.2px;
+    font-size: 2.1rem;
+    filter: drop-shadow(0 3px 12px #fff8);
+    text-shadow: 0 1px 7px #fff3;
+}
+h3 {
+    color: var(--button-pink);
+    font-weight: 700;
+    font-size: 1.23rem;
+    letter-spacing: 0.7px;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 8px #fff5, 0 1px 3px #ff80d233;
+}
+
+#box {
+    cursor: pointer;
+    margin-top: 52px; 
+    animation: float 2.1s infinite alternate cubic-bezier(.41,.78,.55,.97), hueRotate 6s infinite linear;
+    width: 220px; 
+    transition: opacity 0.6s, transform 0.6s, filter 0.35s;
+    box-shadow: 0 15px 35px 0 #d848b680, 0 4px 25px 0 #5beedd60;
+    border-radius: 20px; 
+    filter: drop-shadow(0 7px 30px #ff4eac85);
+}
+@keyframes float {
+    0% { transform: translateY(0);}
+    100% { transform: translateY(-23px) scale(1.07);}
+}
+@keyframes hueRotate {
+    0% {filter: hue-rotate(0deg);}
+    100% {filter: hue-rotate(360deg);}
+}
+.fade-out-scale {
+    opacity: 0 !important;
+    transform: scale(0.05) rotateZ(18deg)!important;
+    filter: blur(2px) brightness(1.5)!important;
+}
+
+.step {
+    display: none;
+    background: rgba(255,255,255,0.75);
+    box-shadow: 0 12px 32px 0 #bb7afd26, 0 2.5px 13px var(--main-grad3)15;
+    padding: 32px 8vw;
+    border-radius: 24px;
+    margin-top: 26px;
+    animation: stepin .80s cubic-bezier(.39,1.35,.44,.98);
+    backdrop-filter: blur(13px) saturate(112%);
+    text-align: center;
+    max-width: 520px;
+    width: 94%;
+    border: 2.7px solid var(--accent2);
+    border-bottom: 6.8px solid var(--button-pink);
+    position: relative;
+    z-index: 2;
+}
+@keyframes stepin {
+    from {opacity:0; transform: translateY(36px) scale(.93);}
+    to {opacity:1; transform: translateY(0) scale(1);}
+}
+.step p {
+    text-align: center;
+    line-height: 1.7;
+    font-size: 16.3px;
+    margin-bottom: 15px;
+    letter-spacing: .01em;
+}
+.step em {
+    color: var(--main-grad3);
+    font-weight: 600;
+}
+
+button {
+    margin-top: 16px;
+    padding: 14px 36px;
+    border-radius: 32px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    border: none;
+    background: transparent;
+    color: white;
+    transition: all 0.21s cubic-bezier(.37,2,.39,.9);
+    box-shadow: 0 6px 22px #ffe15647;
+}
+.nav-button {
+    background: linear-gradient(93deg,var(--button-pink) 0%, var(--accent2) 70%, var(--main-grad1) 100%);
+    box-shadow: 0 9px 25px #ff6bcb60;
+    color: #fff;
+    border-bottom: 4px solid var(--main-grad2);
+}
+.nav-button:hover, .interact-button:hover {
+    background: linear-gradient(97deg, var(--accent1), var(--button-pink), var(--main-grad2));
+    transform: scale(1.05) translateY(-3px) skewX(-1deg);
+    box-shadow: 0 12px 28px #ea54dd58, 0 1px 22px #1ee7ff45;
+    filter: brightness(1.11) blur(.2px);
+}
+.back-button {
+    background: #dedfff;
+    color: var(--main-grad3);
+    border: 2.1px solid var(--button-blue);
+    box-shadow: 0 2px 10px #547fff31, 0 0px 2px #bbe1fa70;
+}
+.back-button:hover {
+    background: linear-gradient(90deg, #e0e0e0 40%, #bae8ff 90%);
+    color: #1d267d;
+    transform: scale(1.03) translateY(-2.5px);
+    box-shadow: 0 7px 25px #5bd1ff41;
+}
+
+.interact-button {
+    background: linear-gradient(88deg, var(--accent1), var(--button-pink), var(--main-grad2));
+    padding: 15px 30px;
+    margin: 8px 4px; 
+    border-radius: 30px;
+    box-shadow: 0 10px 22px #ff4eac45;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.13rem;
+    border: none;
+    transition: all .22s cubic-bezier(.41,.92,.66,1.37);
+    font-weight: 700;
+    letter-spacing: .3px;
+    text-decoration: none;
+}
+.interact-button.roblox {
+    background: linear-gradient(90deg,#6xfe,#3e8cff 80%, #637bff);
+    box-shadow: 0 12px 32px #4d7cff61;
+}
+
+body:before {
+    content:'';
+    position: fixed;
+    z-index:-1;
+    left: 0;
+    top:0;
+    width:230px;
+    height:230px;
+    background:radial-gradient(circle at 60% 30%, #ff6dcb48 60%, transparent 100%);
+    filter: blur(40px);
+    opacity:.6;
+    animation: move1 22s linear infinite alternate;
+    pointer-events: none;
+}
+body:after {
+    content:'';
+    position: fixed;
+    right:0; bottom:0;
+    width:210px; height:210px;
+    background:radial-gradient(circle at 80% 65%, #4ae8ff33 65%, transparent 100%);
+    filter: blur(35px);
+    opacity:.5;
+    animation: move2 25s linear infinite alternate;
+    pointer-events: none;
+}
+@keyframes move1 {
+  0% {transform:translateY(0);}
+  100% {transform:translateY(35px) scale(1.07);}
+}
+@keyframes move2 {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-30px) scale(1.13);}
+}
+
+.wishlist {
+    background: rgba(255,255,255,0.87);
+    border-radius: 20px;
+    padding: 24px 26px;
+    margin: 20px auto;
+    max-width: 420px;
+    width: 85%;
+    text-align: left;
+    box-shadow: 0 10px 26px #e099ff23, 0 1.5px 3px #fd1d1d60;
+    border-left: 5px solid var(--button-pink);
+    border-bottom: 3.5px solid var(--accent2);
+}
+.wishlist ul {
+    padding-left: 20px;
+    margin: 0;
+    list-style: none;
+    position:relative;
+    z-index:2;
+}
+.wishlist li {
+    margin: 11px 0;
+    font-size: 17.2px;
+    padding-left: 29px;
+    position: relative;
+    line-height: 1.6;
+    font-weight: 500;
+}
+.wishlist li::before {
+    content: '⭐';
+    position: absolute;
+    left: 2px;
+    top: 1.3px;
+    animation: wish-glow .9s alternate infinite cubic-bezier(.59,2,0,0.3);
+    font-size: 1.05em;
+    filter: drop-shadow(0 3px 10px #ffe156a5);
+}
+@keyframes wish-glow {
+    0% {color: var(--accent3); filter: brightness(2.1);}
+    100% {color: #ff4eac; filter: brightness(1.16);}
+}
+
+#fotoDia {
+    width: 154px;
+    height: 154px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    display: none;
+    border: 5px solid var(--accent2);
+    box-shadow: 0 5px 26px #fa68b666;
+    transition:box-shadow 0.4s;
+    animation: glow 2.5s infinite alternate cubic-bezier(.46,.92,.45,1);
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 7px 22px #ffccdd93; }
+    100% { box-shadow: 0 10px 38px #fd1d1d33, 0 0 18px #fa68b666; }
+}
+
+@media (max-width: 600px){
+    .step {
+        padding: 13vw 4vw 8vw 4vw;
+        width: 98%;
     }
-
-    #box {
-        cursor: pointer;
-        margin-top: 50px; 
-        animation: float 2s infinite ease-in-out;
-        width: 220px; 
-        transition: opacity 0.6s ease, transform 0.6s ease; 
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
-        border-radius: 15px; 
-    }
-
-    @keyframes float {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-12px); } 
-        100% { transform: translateY(0); }
-    }
-
-    .fade-out-scale {
-        opacity: 0 !important;
-        transform: scale(0.01) !important; 
-    }
-
-    .step {
-        display: none;
-        background: rgba(255, 255, 255, 0.95); 
-        padding: 25px; 
-        border-radius: 20px; 
-        margin-top: 30px; 
-        animation: fadeIn .7s ease-out; 
-        backdrop-filter: blur(8px); 
-        text-align: center;
-        max-width: 500px; 
-        width: 90%;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); 
-    }
-
-    .step p {
-        text-align: center; 
-        line-height: 1.7; 
-        font-size: 16px; 
-        white-space: normal;
-        margin-bottom: 15px;
-    }
-
-    @keyframes fadeIn {
-        from { opacity:0; transform: translateY(20px) scale(0.95); }
-        to   { opacity:1; transform: translateY(0) scale(1); }
-    }
-
-    button {
-        margin-top: 15px; 
-        padding: 12px 25px; 
-        border-radius: 30px; 
-        cursor: pointer;
-        font-size: 17px;
-        transition: all 0.3s ease; 
-        border: none;
-        color: white;
-        font-weight: 600; 
-        letter-spacing: 0.5px;
-    }
-
-    .nav-button {
-        background-color: #ff66b2; 
-        background: linear-gradient(90deg, #ff66b2 0%, #ff99cc 100%); 
-        box-shadow: 0 8px 15px rgba(255, 102, 178, 0.3); 
-    }
-    
-    .back-button {
-        background: #e0e0e0; 
-        color: #6a1a8c; 
-        border: 2px solid #b388eb; 
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    h2 { font-size:1.28rem;}
+    .interact-button,.nav-button,button{
+        padding: 10px 14px;
+        font-size:15px;
     }
-
-    .back-button:hover {
-        background: #d0d0d0;
-        transform: scale(1.03);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-    }
-
-    .nav-button:hover {
-        background: linear-gradient(90deg, #ff99cc 0%, #ff66b2 100%);
-        transform: scale(1.03);
-        box-shadow: 0 10px 20px rgba(255, 102, 178, 0.4);
-    }
-    
-    .interact-button {
-        background: #00d280; 
-        padding: 14px 28px;
-        margin: 8px 5px; 
-        border-radius: 30px;
-        box-shadow: 0 8px 15px rgba(0, 210, 128, 0.3);
-        text-decoration: none;
-        color: white;
-        display: inline-flex; 
-        align-items: center;
-        gap: 8px; 
-    }
-
-    .interact-button.roblox {
-        background: #5b5bff; 
-        box-shadow: 0 8px 15px rgba(91, 91, 255, 0.3);
-    }
-
-    .interact-button:hover {
-        opacity: 0.95;
-        transform: scale(1.03);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* Gaya untuk Wishlist */
-    .wishlist {
-        background: rgba(255, 255, 255, 0.85); 
-        border-radius: 15px; 
-        padding: 20px; 
-        margin: 20px auto;
-        max-width: 400px; 
-        width: 85%;
-        text-align: left;
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08); 
-    }
-    .wishlist ul {
-        padding-left: 25px; 
-        margin: 0;
-        list-style: none; 
-    }
-    .wishlist li {
-        margin: 10px 0;
-        font-size: 16px;
-        position: relative;
-        padding-left: 25px; 
-        line-height: 1.5;
-    }
-    .wishlist li::before {
-        content: '🌟'; 
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-
-    /* Ukuran Foto Dikecilkan */
-    #fotoDia {
-        width: 150px; 
-        height: 150px; 
-        object-fit: cover; 
-        border-radius: 50%; 
-        margin-bottom: 25px; 
-        display:none;
-        border: 5px solid #ffccdd; 
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    @media (max-width: 600px) {
-        .step {
-            padding: 20px;
-            width: 95%;
-        }
-        .interact-button {
-            padding: 12px 20px;
-            font-size: 15px;
-            gap: 5px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 15px;
-        }
-        .wishlist {
-            padding: 15px;
-        }
-        .wishlist li {
-            font-size: 15px;
-        }
-    }
-
+    .wishlist {padding:13px;}
+    .wishlist li{font-size:16px;}
+    #fotoDia{width:97px;height:97px;}
+}
 </style>
 </head>
 <body>
@@ -214,72 +295,71 @@
 
 <img id="box" src="kado.gif" alt="Kotak Kado Animasi">
 
-<audio id="musik" src="happy-birthday.mp3" style="display:none;" loop></audio> 
+<audio id="musik" src="happy-birthday.mp3" style="display:none;" loop></audio>
 
-<img id="fotoDia" src="foto-dia.jpg" alt="Foto Ratu Fish-it"> 
+<img id="fotoDia" src="foto-dia.jpg" alt="Foto Ratu Fish-it">
 
 <div id="step1" class="step">
-    <h2>✨ Selamat Ulang Tahun, <em>Ratu Fish-it</em> 🎣✨</h2>
-    <p style="font-weight: bold; margin-bottom: 15px;">
-      Bawa joran paling panjang<br>
-      Umpan dipasang di air bening<br>
-      Semoga kamu makin disayang<br>
-      Jangan lupa aku ditraktir somay keliling
-    </p>
-    <p>
-        Selamat ulang tahun ke-(26)! Semoga kamu sehat selalu, bahagia, dan rezekimu seluas lautan tempat kamu mancing!
-    </p>
-    <button onclick="next('step1','step2')" class="nav-button">Lanjut, jangan <em>skip</em>! 👉</button>
+    <h2>✨ Selamat Ulang Tahun, <em>Ratu Fish-it</em> 🎣✨</h2>
+    <p style="font-weight: bold; margin-bottom: 15px;">
+      Bawa joran paling panjang<br>
+      Umpan dipasang di air bening<br>
+      Semoga kamu makin disayang<br>
+      Jangan lupa aku ditraktir somay keliling
+    </p>
+    <p>
+        Selamat ulang tahun ke-(26)! Semoga kamu sehat selalu, bahagia, dan rezekimu seluas lautan tempat kamu mancing!
+    </p>
+    <button onclick="next('step1','step2')" class="nav-button">Lanjut, jangan <em>skip</em>! 👉</button>
 </div>
 
 <div id="step2" class="step">
-    <p>Aku masukin foto kamu di sini ya tadinya mau klik tambahkan teman tapi akunnya udah lama ga di sentuh,foto ini juga dari algoritma facebook karena facebook juga tau siapa yang sering di cariin dan di pikirin 😅 jangan marah, niatnya cuma biar momen ini kerasa lebih spesial.</p>
+    <p>Aku masukin foto kamu di sini ya tadinya mau klik tambahkan teman tapi akunnya udah lama ga di sentuh,foto ini juga dari algoritma facebook karena facebook juga tau siapa yang sering di cariin dan di pikirin 😅 jangan marah, niatnya cuma biar momen ini kerasa lebih spesial.</p>
     <button onclick="next('step2','step1')" class="back-button"><span>⬅️</span> Kembali</button>
-    <button onclick="next('step2','step3')" class="nav-button">Lanjut <span>👉</span></button>
+    <button onclick="next('step2','step3')" class="nav-button">Lanjut <span>👉</span></button>
 </div>
 
 <div id="step3" class="step">
-    <p>Hidup memang capek. Kadang rasanya kayak HP yang minta di-<em>charge</em> tiap jam. Tapi kamu hebat, kamu selalu bisa bertahan! Jadi tetap semangat, ya!</p>
+    <p>Hidup memang capek. Kadang rasanya kayak HP yang minta di-<em>charge</em> tiap jam. Tapi kamu hebat, kamu selalu bisa bertahan! Jadi tetap semangat, ya!</p>
     <button onclick="next('step3','step2')" class="back-button"><span>⬅️</span> Kembali</button>
-    <button onclick="next('step3','step4')" class="nav-button">Terusin <span>👉</span></button>
+    <button onclick="next('step3','step4')" class="nav-button">Terusin <span>👉</span></button>
 </div>
 
 <div id="step4" class="step">
-    <p>Meski kamu jarang <em>update</em>, storymu yang absurd itu selalu ku-screenshot. Entah itu "stay dimana? stay strong" atau "nasi padang adalah penenang jiwa kalo inimah ngarang sendiri".itu bikin aku senyum sendiri apalagi story mancing pas nikahan temen kamu hahaha bisa bisanya seenjoy itu.</p>
+    <p>Meski kamu jarang <em>update</em>, storymu yang absurd itu selalu ku-screenshot. Entah itu "stay dimana? stay strong" atau "nasi padang adalah penenang jiwa kalo inimah ngarang sendiri".itu bikin aku senyum sendiri apalagi story mancing pas nikahan temen kamu hahaha bisa bisanya seenjoy itu.</p>
     <button onclick="next('step4','step3')" class="back-button"><span>⬅️</span> Kembali</button>
-    <button onclick="next('step4','step5')" class="nav-button">Lanjut <span>👉</span></button>
+    <button onclick="next('step4','step5')" class="nav-button">Lanjut <span>👉</span></button>
 </div>
 
 <div id="step5" class="step">
-    <p>Dan kalau kamu gabut, mabar mancing bareng aku juga gas kok cari secret :v daripada kamu mancing sendirian tiap malam ga dapet dapet 🤣</p>
+    <p>Dan kalau kamu gabut, mabar mancing bareng aku juga gas kok cari secret :v daripada kamu mancing sendirian tiap malam ga dapet dapet 🤣</p>
     <button onclick="next('step5','step4')" class="back-button"><span>⬅️</span> Kembali</button>
-    <button onclick="next('step5','step6')" class="nav-button">Lanjut <span>👉</span></button>
+    <button onclick="next('step5','step6')" class="nav-button">Lanjut <span>👉</span></button>
 </div>
 
 <div id="step6" class="step">
     <p>Oh iya, soal kado… masih nyusul. Kadonya kecil, tapi spesial. Ini adalah <b>item langka</b> yang harus kamu <b>simpan dan jaga baik-baik</b>, kayak <b>jimat mancing</b> paling ampuh. (Aku serius bikin <em>script</em> ini lho, gak main-main wkwk).</p>
     <button onclick="next('step6','step5')" class="back-button"><span>⬅️</span> Kembali</button>
-    <button onclick="next('step6','step7')" class="nav-button">Tampilkan Clue 🔍</button>
+    <button onclick="next('step6','step7')" class="nav-button">Tampilkan Clue 🔍</button>
 </div>
 
 <div id="step7" class="step">
-    <h3>Clue Kado: Mata Joran Keberuntungan 🍀</h3>
-    <p>Kado ini adalah <b>barang penting</b> di joran pancing. Bentuknya lingkaran kecil, biasa disebut <b>Mata Joran</b> atau <em>Ring Guide</em>.</p>
-    <p>Fungsinya? Biar <b>benang pancing</b> (atau isi dompet kamu 🤫) <b>nggak gampang lepas</b> waktu <em>strike</em> besar! **Tapi yang paling penting, makna dari Mata Joran ini punya *clue* rahasia lain yang harus kamu tebak!** 😉</p>
+    <h3>Clue Kado: Mata Joran Keberuntungan 🍀</h3>
+    <p>Kado ini adalah <b>barang penting</b> di joran pancing. Bentuknya lingkaran kecil, biasa disebut <b>Mata Joran</b> atau <em>Ring Guide</em>.</p>
+    <p>Fungsinya? Biar <b>benang pancing</b> (atau isi dompet kamu 🤫) <b>nggak gampang lepas</b> waktu <em>strike</em> besar! **Tapi yang paling penting, makna dari Mata Joran ini punya *clue* rahasia lain yang harus kamu tebak!** 😉</p>
     <button onclick="next('step7','step6')" class="back-button"><span>⬅️</span> Kembali</button>
-    <button onclick="next('step7','step8')" class="nav-button">Lanjut <span>👉</span></button>
+    <button onclick="next('step7','step8')" class="nav-button">Lanjut <span>👉</span></button>
 </div>
 
 <div id="step8" class="step">
-        <p>Dan… sebenernya aku... suka kamu! Eh, maksudku suka <b>touring</b> dan <b>kulineran</b>! Kapan-kapan sabi kali, liat pemandangan sambil kulineran, walaupun cuma makan siomay/batagor sambil kasih <em>snack</em> ke kucing jalanan. Tapi kapan, ya? 🥺</p>
+    <p>Dan… sebenernya aku... suka kamu! Eh, maksudku suka <b>touring</b> dan <b>kulineran</b>! Kapan-kapan sabi kali, liat pemandangan sambil kulineran, walaupun cuma makan siomay/batagor sambil kasih <em>snack</em> ke kucing jalanan. Tapi kapan, ya? 🥺</p>
     <button onclick="next('step8','step7')" class="back-button"><span>⬅️</span> Kembali</button>
-    <button onclick="next('step8','step9')" class="nav-button">Terakhir ➡️</button>
+    <button onclick="next('step8','step9')" class="nav-button">Terakhir ➡️</button>
 </div>
 
 <div id="step9" class="step">
     <h3>🎁 Wishlist Rahasia Ratu Fish-it 📝</h3>
     <p>Aku tahu kamu punya cita-cita jadi Selebgram Food Vlogger. Semoga semua harapanmu tercapai!</p>
-    
     <div class="wishlist">
         <ul>
             <li><b>Waktu tidur cukup</b> (biar gak <em>cranky</em> kayak umpan basi, <em>hehe</em>).</li>
@@ -289,29 +369,28 @@
             <li>Mendapat <b>Jutaan <em>followers</em> setia</b> dan punya <em>engagement</em> yang tinggi!</li>
         </ul>
     </div>
-    
     <p style="font-style: italic; margin-top: 15px;">Anggap aja kado kecilnya ini seperti <em>reel</em> cadangan yang siap dipasang kapan saja 😉</p>
     <button onclick="next('step9','step8')" class="back-button"><span>⬅️</span> Kembali</button>
     <button onclick="next('step9','step10')" class="nav-button">Next Level ⬆️</button>
 </div>
 
 <div id="step10" class="step">
-    <h3>Jangan lupa…</h3>
-    <p>Aku udah siapin umpan paling jitu buat kamu <em>chat</em> duluan. Atau kalau mau mabar <em>fish-it</em> di Roblox, ini ID-ku. <b>Buruan <em>chat</em> deh, jangan bikin aku <em>waiting</em> kayak nungguin ikan gabus makan umpan!</b> 😅</p>
+    <h3>Jangan lupa…</h3>
+    <p>Aku udah siapin umpan paling jitu buat kamu <em>chat</em> duluan. Atau kalau mau mabar <em>fish-it</em> di Roblox, ini ID-ku. <b>Buruan <em>chat</em> deh, jangan bikin aku <em>waiting</em> kayak nungguin ikan gabus makan umpan!</b> 😅</p>
 
-    <p>
-                <a href="https://wa.me/6282298180077?text=Oke,%20aku%20udah%20liat%20semua%20blunder%20dan%20script%20kamu.%20Sekarang,%20jelasin%20maksud%20Mata%20Joran%20ini%20dong!" target="_blank" class="interact-button">
-            💬 Jelasin Maksud Mata Joran Ini (Chat WA)
-        </a>
-        <button onclick="copyToClipboard('FearlessMan')" id="roblox-btn" class="interact-button roblox">
-            🎮 Copy ID Robloxku (Mabar Mancing)
-        </button>
-    </p>
+    <p>
+            <a href="https://wa.me/6282298180077?text=Oke,%20aku%20udah%20liat%20semua%20blunder%20dan%20script%20kamu.%20Sekarang,%20jelasin%20maksud%20Mata%20Joran%20ini%20dong!" target="_blank" class="interact-button">
+            💬 Jelasin Maksud Mata Joran Ini (Chat WA)
+        </a>
+        <button onclick="copyToClipboard('FearlessMan')" id="roblox-btn" class="interact-button roblox">
+            🎮 Copy ID Robloxku (Mabar Mancing)
+        </button>
+    </p>
 
-    <input type="hidden" id="roblox-id" value="FearlessMan">
-    <p id="copy-status" style="margin-top:10px;font-weight:bold;font-size:14px;color:#ff3366;"></p>
+    <input type="hidden" id="roblox-id" value="FearlessMan">
+    <p id="copy-status" style="margin-top:10px;font-weight:bold;font-size:14px;color:#ff3366;"></p>
     <button onclick="next('step10','step9')" class="back-button"><span>⬅️</span> Kembali</button>
-    <button onclick="next('step10','step11')" class="nav-button">Selesai ✅</button>
+    <button onclick="next('step10','step11')" class="nav-button">Selesai ✅</button>
 </div>
 
 <div id="step11" class="step">
@@ -325,81 +404,81 @@
 const MY_ROBLOX_ID = "FearlessMan"; 
 
 function copyToClipboard(textToCopy) {
-    const finalId = document.getElementById('roblox-id') ? document.getElementById('roblox-id').value : textToCopy;
-    const button = document.getElementById('roblox-btn');
-    const originalText = button.innerHTML; 
+    const finalId = document.getElementById('roblox-id') ? document.getElementById('roblox-id').value : textToCopy;
+    const button = document.getElementById('roblox-btn');
+    const originalText = button.innerHTML; 
 
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(finalId).then(() => {
-            button.innerHTML = "ID TERCIPTA! ✅";
-            button.disabled = true;
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.disabled = false;
-            }, 3000);
-        }).catch(err => {
-            console.error('Gagal menggunakan navigator.clipboard: ', err);
-            fallbackCopyTextToClipboard(finalId, button, originalText);
-        });
-    } else {
-        fallbackCopyTextToClipboard(finalId, button, originalText);
-    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(finalId).then(() => {
+            button.innerHTML = "ID TERCIPTA! ✅";
+            button.disabled = true;
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 3000);
+        }).catch(err => {
+            console.error('Gagal menggunakan navigator.clipboard: ', err);
+            fallbackCopyTextToClipboard(finalId, button, originalText);
+        });
+    } else {
+        fallbackCopyTextToClipboard(finalId, button, originalText);
+    }
 }
 
 function fallbackCopyTextToClipboard(text, button, originalText) {
-    const textArea = document.createElement("textarea");
-    textArea.value = text;
-    
-    textArea.style.position = "fixed";
-    textArea.style.left = "-9999px";
-    textArea.style.top = "-9999px";
-    document.body.appendChild(textArea);
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    textArea.style.top = "-9999px";
+    document.body.appendChild(textArea);
 
-    textArea.focus();
-    textArea.select();
+    textArea.focus();
+    textArea.select();
 
-    try {
-        const successful = document.execCommand('copy');
-        if (successful) {
-            button.innerHTML = "ID TERCIPTA! (Fallback) ✅";
-            button.disabled = true;
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.disabled = false;
-            }, 3000);
-        } else {
-            alert('Gagal menyalin ID. Mohon salin manual: ' + text);
-        }
-    } catch (err) {
-        alert('Gagal menyalin ID. Mohon salin manual: ' + text);
-    }
-    document.body.removeChild(textArea);
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            button.innerHTML = "ID TERCIPTA! (Fallback) ✅";
+            button.disabled = true;
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 3000);
+        } else {
+            alert('Gagal menyalin ID. Mohon salin manual: ' + text);
+        }
+    } catch (err) {
+        alert('Gagal menyalin ID. Mohon salin manual: ' + text);
+    }
+    document.body.removeChild(textArea);
 }
 
 document.getElementById("box").onclick = function() {
-    const boxElement = this;
-    boxElement.classList.add("fade-out-scale");
-    
-    setTimeout(() => {
-        boxElement.style.display = "none";
-        
-        document.getElementById("fotoDia").style.display = "block"; 
-        document.getElementById("musik").play(); 
-        
-        document.getElementById("step1").style.display = "block"; 
-    }, 600); 
+    const boxElement = this;
+    boxElement.classList.add("fade-out-scale");
+    
+    setTimeout(() => {
+        boxElement.style.display = "none";
+        
+        document.getElementById("fotoDia").style.display = "block"; 
+        document.getElementById("musik").play(); 
+        
+        document.getElementById("step1").style.display = "block"; 
+    }, 600); 
 };
 
 function next(hide, show) {
-    document.getElementById(hide).style.display = "none";
-    document.getElementById(show).style.display = "block";
+    document.getElementById(hide).style.display = "none";
+    document.getElementById(show).style.display = "block";
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    let steps = document.querySelectorAll('.step');
-    steps.forEach(function(el) {
-        el.style.display = 'none';
-    });
+    let steps = document.querySelectorAll('.step');
+    steps.forEach(function(el) {
+        el.style.display = 'none';
+    });
 });
 </script>
 
