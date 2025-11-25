@@ -198,30 +198,69 @@
 </div>
 <script>
 // PENTING: ID Roblox yang akan dicopy harus diisi di sini juga jika Anda tidak menggunakan hidden input
-const MY_ROBLOX_ID = "FearlessMan"; // <<< GANTI INI
+const MY_ROBLOX_ID = "FearlessMan"; // <<< PASTIKAN INI SAMA
 
-// Fungsi Copy ID Roblox
+// Fungsi Copy ID Roblox (Lebih Robust dengan Fallback)
 function copyToClipboard(textToCopy) {
-    // Memastikan kita menggunakan ID yang benar
     const finalId = document.getElementById('roblox-id') ? document.getElementById('roblox-id').value : textToCopy;
+    const button = document.getElementById('roblox-btn');
+    const originalText = button.textContent;
+
+    // 1. Coba menggunakan API Clipboard modern (Paling bagus, tapi butuh HTTPS)
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(finalId).then(() => {
+            // Berhasil
+            button.textContent = "ID TERCIPTA! ✅";
+            button.disabled = true;
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 3000);
+        }).catch(err => {
+            // Gagal (biasanya karena konteks tidak aman/local file) -> Lanjut ke Fallback
+            console.error('Gagal menggunakan navigator.clipboard: ', err);
+            fallbackCopyTextToClipboard(finalId, button, originalText);
+        });
+    } else {
+        // 2. Gunakan Fallback (metode lama, lebih permisif di local file)
+        fallbackCopyTextToClipboard(finalId, button, originalText);
+    }
+}
+
+// Fungsi Fallback yang menggunakan execCommand
+function fallbackCopyTextToClipboard(text, button, originalText) {
+    // Buat elemen textarea sementara
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
     
-    // Gunakan Clipboard API modern
-    navigator.clipboard.writeText(finalId).then(() => {
-        const button = document.getElementById('roblox-btn');
-        const originalText = button.textContent;
+    // Tempatkan di luar layar
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    textArea.style.top = "-9999px";
+    document.body.appendChild(textArea);
 
-        button.textContent = "ID TERCIPTA! ✅";
-        button.disabled = true;
+    textArea.focus();
+    textArea.select();
 
-        setTimeout(() => {
-            button.textContent = originalText;
-            button.disabled = false;
-        }, 3000);
-    }).catch(err => {
-        // Fallback untuk browser lama
-        console.error('Gagal menyalin: ', err);
-        alert('Gagal menyalin ID. ID-nya adalah: ' + finalId);
-    });
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            // Berhasil
+            button.textContent = "ID TERCIPTA! (Fallback) ✅";
+            button.disabled = true;
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 3000);
+        } else {
+            // Gagal total
+            alert('Gagal menyalin ID. Mohon salin manual: ' + text);
+        }
+    } catch (err) {
+        // Error parah
+        alert('Gagal menyalin ID. Mohon salin manual: ' + text);
+    }
+    document.body.removeChild(textArea);
 }
 
 
