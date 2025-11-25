@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday</title>
+<title>Happy Birthday Ratu Pengendali Semua Elemen</title>
 <style>
     body {
         background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
@@ -43,10 +43,12 @@
         text-align: center;
     }
 
+    /* Ukuran Font Pesan Diperbesar */
     .step p {
         text-align: center; 
-        line-height: 1.5;
-        white-space: normal;
+        line-height: 1.6;
+        font-size: 17px; 
+        white-space: normal;
     }
 
     @keyframes fadeIn {
@@ -54,7 +56,7 @@
         to   { opacity:1; transform:scale(1); }
     }
 
-    /* Gaya dasar tombol */
+    /* Gaya dasar tombol */
     button {
         margin-top: 12px;
         padding: 10px 20px;
@@ -63,37 +65,46 @@
         color:white;
         cursor:pointer;
         font-size: 16px;
-        transition: all 0.2s ease;
+        transition: all 0.2s ease;
     }
 
-    /* Gaya untuk tombol NAVIGASI (Lanjut, Terusin, Tampilkan) */
-    .nav-button {
-        /* Menggunakan gradien yang lebih cerah dan menarik */
-        background: linear-gradient(90deg, #ff6699 0%, #ff3366 100%); 
+    /* Gaya tombol Navigasi */
+    .nav-button {
+        background: linear-gradient(90deg, #ff6699 0%, #ff3366 100%); 
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-button:hover {
+        background: linear-gradient(90deg, #ff3366 0%, #ff6699 100%);
+        transform: scale(1.05);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Gaya untuk tombol INTERAKTIF (WA/Roblox) */
+    .interact-button {
+        background: #00b894; /* Hijau muda */
         font-weight: bold;
+        padding: 12px 25px;
+        margin: 5px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none; /* Penting untuk tag <a> */
+        color: white;
+        display: inline-block; /* Agar tombol WA bisa seperti button */
     }
 
-    .nav-button:hover {
-        background: linear-gradient(90deg, #ff3366 0%, #ff6699 100%);
-        transform: scale(1.05);
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    .interact-button.roblox {
+        background: #0072ff; /* Biru roblox */
     }
-    
-    /* Gaya untuk tombol KIRIM (di Step 9) */
-    .submit-button {
-        background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%); /* Warna Biru */
-        font-weight: bold;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    .submit-button:hover {
-        background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+
+    .interact-button:hover {
+        opacity: 0.9;
         transform: scale(1.05);
     }
 
+    /* Ukuran Foto Dikecilkan */
     #fotoDia {
-        width: 160px;
+        width: 120px; 
         border-radius: 15px;
         margin-bottom: 15px;
         display:none;
@@ -106,81 +117,126 @@
 
 <img id="box" src="kado.gif">
 
-<audio id="musik" src="happy-birthday.mp3" style="display:none;"></audio> 
+<audio id="musik" src="happy-birthday.mp3" style="display:none;"></audio> 
 
-<img id="fotoDia" src="foto-dia.jpg" style="display:none;"> 
+<img id="fotoDia" src="foto-dia.jpg" style="display:none;"> 
 
 <div id="step1" class="step">
-    <h2>✨ Selamat Ulang Tahun ✨</h2>
-    <p>Hari ini hari kamu. Semoga kamu sehat terus, bahagia terus, dan dapet banyak hal-hal baik yang kamu tunggu. Makasih ya udah jadi orang yang selalu bikin hidup kerasa lebih hangat.</p>
-    <button onclick="next('step1','step2')" class="nav-button">Lanjut</button>
+    <h2>✨ Selamat Ulang Tahun, *Sobat Angler* 🎣✨</h2>
+    <p style="font-weight: bold; margin-bottom: 15px;">
+      Bawa joran paling panjang<br>
+      Umpan dipasang di air bening<br>
+      Semoga kamu makin disayang<br>
+      Jangan lupa aku ditraktir somay keliling
+    </p>
+    <p>
+        Selamat ulang tahun ke-(26)! Semoga kamu sehat selalu, bahagia, dan rezekimu seluas lautan tempat kamu mancing!
+    </p>
+    <button onclick="next('step1','step2')" class="nav-button">Lanjut, jangan *skip*!</button>
 </div>
 
 <div id="step2" class="step">
-    <p>Aku masukin foto kamu di sini ya 😅 jangan marah, niatnya cuma biar momen ini kerasa lebih hangat.</p>
+    <p>Aku masukin foto kamu di sini ya ini juga dari algoritma facebook karena facebook juga tau sipa yang sering di cariin dan di pikirin 😅 jangan marah, niatnya cuma biar momen ini kerasa lebih spesial.</p>
     <button onclick="next('step2','step3')" class="nav-button">Lanjut</button>
 </div>
 
 <div id="step3" class="step">
-    <p>Aku tau hidup capek… tapi kamu hebat banget bisa sampai sejauh ini.</p>
+    <p>Hidup memang capek. Kadang rasanya kayak HP yang minta di-*charge* tiap jam. Tapi kamu hebat, kamu selalu bisa bertahan! Jadi tetap semangat, ya!</p>
     <button onclick="next('step3','step4')" class="nav-button">Terusin</button>
 </div>
 
 <div id="step4" class="step">
-    <p>Kamu jarang update, jarang nongol… tapi setiap kamu bikin story absurd kayak “stay dimana? stay strong” itu bikin aku senyum sendiri hahaha.</p>
+    <p>Meski kamu jarang *update*, storymu yang absurd itu selalu ku-screenshot. Entah itu "stay dimana? stay strong" atau "nasi padang adalah penenang jiwa kalo inimah ngarang sendiri".itu bikin aku senyum sendiri apalagi story mancing pas nikahan temen kamu hahaha bisa bisanya seenjoy itu.</p>
     <button onclick="next('step4','step5')" class="nav-button">Lanjut</button>
 </div>
 
 <div id="step5" class="step">
-    <p>Dan kalau kamu gabut, mabar mancing bareng aku juga gas kok… daripada kamu mancing sendirian tiap malam 🤣</p>
+    <p>Dan kalau kamu gabut, mabar mancing bareng aku juga gas kok cari secret :v daripada kamu mancing sendirian tiap malam 🤣</p>
     <button onclick="next('step5','step6')" class="nav-button">Lanjut</button>
 </div>
 
 <div id="step6" class="step">
-    <p>Oh iya soal kado… nyusul ya. Tapi clue-nya kecil, lucu, dan sesuai hobi kamu 🎣</p>
-    <button onclick="next('step6','step7')" class="nav-button">Tampilkan</button>
+    <p>Oh iya, soal kado… masih nyusul. Kadonya kecil, tapi spesial. Ini adalah *item langka* yang harus kamu **simpan dan jaga baik-baik**, kayak **jimat mancing** paling ampuh. (Aku serius bikin *script* ini lho, gak main-main!).</p>
+    <button onclick="next('step6','step7')" class="nav-button">Tampilkan Clue</button>
 </div>
 
 <div id="step7" class="step">
-    <h3>🎣 Mini Fishing Rod Keychain 🎣</h3>
-    <p>Biar tiap kali kamu lihat ini… kamu inget ada seseorang yang selalu gas mabar kapan pun 😄</p>
+    <h3>Clue Kado: Mata Joran Keberuntungan</h3>
+    <p>Kado ini adalah **barang penting** di joran pancing. Bentuknya lingkaran kecil, biasa disebut **Mata Joran** atau *Ring Guide*.</p>
+    <p>Fungsinya? Biar **benang pancing** (atau isi dompet kamu 🤫) **nggak gampang lepas** waktu *strike* besar! **Penasaran** kenapa aku kasih *clue* beginian? Mending kita **bahas teknik Mata Joran ini di WA** ya! 😉</p>
     <button onclick="next('step7','step8')" class="nav-button">Lanjut</button>
 </div>
 
 <div id="step8" class="step">
-    <p>Dan… kalo nanti waktunya pas, mungkin kita bisa makan bareng, atau cuma cerita-cerita tentang capek jadi dewasa.</p>
+        <p>Dan… sebenernya aku... suka kamu! Eh, maksudku suka **touring** dan **kulineran**! Kapan-kapan sabi kali, liat pemandangan sambil kulineran, walaupun cuma makan siomay/batagor sambil kasih *snack* ke kucing jalanan. Tapi kapan, ya? 🥺</p>
     <button onclick="next('step8','step9')" class="nav-button">Terakhir</button>
 </div>
 
 <div id="step9" class="step">
-    <h3>Sebelum nutup…</h3>
-    <p>Boleh tukeran WA / ID Roblox? Gapaksa kok, beneran… cuma biar komunikasi gak hilang aja 😄</p>
+    <h3>Jangan lupa…</h3>
+    <p>Aku udah siapin umpan paling jitu buat kamu *chat* duluan. Atau kalau mau mabar *fish-it* di Roblox, ini ID-ku. **Gak usah dibalas kalau lagi mancing serius, *beneran*!** Tapi kalau lagi gabut, *chat* aja ya 😉</p>
 
-    <form name="birthday-form" method="POST" data-netlify="true">
+    <p>
+        <a href="https://wa.me/6282298180077?text=Hi!%20Ini%20aku%20yang%20kirim%20link%20ultah%20absurd%20kemarin.%20Mau%20mancing%20ikan%20apa%20hari%20ini%3F%20%F0%9F%A4%A3" target="_blank" class="interact-button">
+            🐟 Umpan WA Paling Jitu (Chat Duluan)
+        </a>
 
-        <input id="wa" name="WA" placeholder="Nomor WhatsApp" style="padding:10px;border-radius:8px;border:1px solid #ccc;width:80%;"><br><br>
+        <button onclick="copyToClipboard('FearlessMan')" id="roblox-btn" class="interact-button roblox">
+            🎣 Copy ID Robloxku (Mabar Mancing)
+        </button>
+    </p>
 
-        <input id="roblox" name="Roblox" placeholder="ID Roblox" style="padding:10px;border-radius:8px;border:1px solid #ccc;width:80%;"><br><br>
-
-        <button type="submit" class="submit-button">Kirim</button>
-    </form>
+    <input type="hidden" id="roblox-id" value="ID-ROBLOX-ANDA">
+    <p id="copy-status" style="margin-top:10px;font-weight:bold;font-size:14px;color:#ff3366;"></p>
     
-    <p id="hasil" style="margin-top:10px;font-weight:bold;"></p>
+    <button onclick="next('step9','step10')" class="nav-button" style="display:none;">Selesai</button>
 </div>
 
+<div id="step10" class="step">
+    <h2>Semoga Harimu Manis!</h2>
+    <p>Sudah selesai, *Sobat Angler*! Jangan sampai kamu blunder, salah kirim *chat* WA ke *contact* lain gara-gara kebanyakan mikirin jenis ikan! Tutup halaman ini, atau mau klik kado lagi? Gak ada apa-apa lagi sih, tapi terserah kamu 🤣</p>
+</div>
 <script>
+// PENTING: ID Roblox yang akan dicopy harus diisi di sini juga jika Anda tidak menggunakan hidden input
+const MY_ROBLOX_ID = "ID-ROBLOX-ANDA"; // <<< GANTI INI
+
+// Fungsi Copy ID Roblox
+function copyToClipboard(textToCopy) {
+    // Memastikan kita menggunakan ID yang benar
+    const finalId = document.getElementById('roblox-id') ? document.getElementById('roblox-id').value : textToCopy;
+    
+    // Gunakan Clipboard API modern
+    navigator.clipboard.writeText(finalId).then(() => {
+        const button = document.getElementById('roblox-btn');
+        const originalText = button.textContent;
+
+        button.textContent = "ID TERCIPTA! ✅";
+        button.disabled = true;
+
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+        }, 3000);
+    }).catch(err => {
+        // Fallback untuk browser lama
+        console.error('Gagal menyalin: ', err);
+        alert('Gagal menyalin ID. ID-nya adalah: ' + finalId);
+    });
+}
+
+
 // Fungsi Kado Klik (Interaktif)
 document.getElementById("box").onclick = function() {
     const boxElement = this;
     boxElement.classList.add("fade-out-scale");
-    
+    
     setTimeout(() => {
         boxElement.style.display = "none";
-        
-        document.getElementById("fotoDia").style.display = "block"; 
-        document.getElementById("musik").play(); 
-        
-        document.getElementById("step1").style.display = "block"; 
+        
+        document.getElementById("fotoDia").style.display = "block"; 
+        document.getElementById("musik").play(); 
+        
+        document.getElementById("step1").style.display = "block"; 
     }, 500); 
 };
 
@@ -192,10 +248,10 @@ function next(hide, show) {
 
 // Memastikan semua step tersembunyi saat halaman dimuat
 document.addEventListener("DOMContentLoaded", function() {
-    let steps = document.querySelectorAll('.step');
-    steps.forEach(function(el) {
-        el.style.display = 'none';
-    });
+    let steps = document.querySelectorAll('.step');
+    steps.forEach(function(el) {
+        el.style.display = 'none';
+    });
 });
 </script>
 
