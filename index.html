@@ -4,34 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Ratu Fish-it 🎣🎂</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <style>
+/* --- VARIABLE WARNA --- */
 :root {
     --main-grad1: #fcb045;
     --main-grad2: #fd1d1d;
-    --main-grad3: #833ab4;
-    --accent1: #1fd1f9;
-    --accent2: #fa68b6;
-    --accent3: #ffe156;
+    --main-grad3: #833ab4; /* Ungu */
+    --accent1: #1fd1f9; /* Biru Muda */
+    --accent2: #fa68b6; /* Pink Terang */
+    --accent3: #ffe156; /* Kuning */
     --button-pink: #ff4eac;
     --button-blue: #3e8cff;
     --shadow: 0 10px 25px 0 rgba(39, 29, 109,0.13);
-    --shadow-strong: 0 6px 32px 0 rgba(145, 103, 255, 0.17);
+    --text-color: #25203a;
 }
 
+/* --- BACKGROUND ANIMASI UTAMA --- */
 body {
     min-height: 100vh;
     margin: 0;
+    /* Gradien 4 warna yang bergerak */
     background: linear-gradient(125deg, var(--main-grad3) 0%, var(--main-grad1) 30%, var(--main-grad2) 70%, var(--accent1) 100%); 
     background-size: 400% 400%;
-    animation: gradient-move 13s ease-in-out infinite;
+    animation: gradient-move 15s ease-in-out infinite;
     font-family: 'Poppins', sans-serif;
-    color: #25203a;
+    color: var(--text-color);
     text-align: center;
-    padding: 24px;
+    padding: 24px 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
 }
 
 @keyframes gradient-move {
@@ -40,6 +44,7 @@ body {
     100% {background-position: 0 50%;}
 }
 
+/* --- JUDUL --- */
 h2 {
     background: linear-gradient(110deg, var(--main-grad2), var(--main-grad3), var(--accent1));
     background-clip: text;
@@ -56,15 +61,30 @@ h2 {
 h3 {
     color: var(--button-pink);
     font-weight: 700;
-    font-size: 1.23rem;
+    font-size: 1.35rem; 
     letter-spacing: 0.7px;
     margin-bottom: 10px;
     text-shadow: 0 2px 8px #fff5, 0 1px 3px #ff80d233;
 }
 
+/* --- KADO & KUE GIF --- */
+#cake {
+    width: 150px;
+    height: auto;
+    margin-top: 52px;
+    margin-bottom: 15px; 
+    animation: pulse 1.5s infinite alternate; 
+    transition: all 0.6s ease-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.05); opacity: 1; }
+}
+
 #box {
     cursor: pointer;
-    margin-top: 52px; 
+    margin-top: 0; 
     animation: float 2.1s infinite alternate cubic-bezier(.41,.78,.55,.97), hueRotate 6s infinite linear;
     width: 220px; 
     transition: opacity 0.6s, transform 0.6s, filter 0.35s;
@@ -86,22 +106,28 @@ h3 {
     filter: blur(2px) brightness(1.5)!important;
 }
 
+/* --- KOTAK KONTEN (GLASSMORPHISM) --- */
 .step {
     display: none;
-    background: rgba(255,255,255,0.75);
-    box-shadow: 0 12px 32px 0 #bb7afd26, 0 2.5px 13px var(--main-grad3)15;
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.4); 
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    /* End Glassmorphism */
+    
     padding: 32px 8vw;
     border-radius: 24px;
     margin-top: 26px;
     animation: stepin .80s cubic-bezier(.39,1.35,.44,.98);
-    backdrop-filter: blur(13px) saturate(112%);
     text-align: center;
     max-width: 520px;
     width: 94%;
-    border: 2.7px solid var(--accent2);
-    border-bottom: 6.8px solid var(--button-pink);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Border samar */
+    border-bottom: 6.8px solid var(--button-pink); /* Garis bawah warna */
     position: relative;
     z-index: 2;
+    color: #000; 
 }
 @keyframes stepin {
     from {opacity:0; transform: translateY(36px) scale(.93);}
@@ -116,9 +142,11 @@ h3 {
 }
 .step em {
     color: var(--main-grad3);
-    font-weight: 600;
+    font-weight: 700; 
+    font-style: normal;
 }
 
+/* --- BUTTONS --- */
 button {
     margin-top: 16px;
     padding: 14px 36px;
@@ -130,7 +158,7 @@ button {
     border: none;
     background: transparent;
     color: white;
-    transition: all 0.21s cubic-bezier(.37,2,.39,.9);
+    transition: all 0.25s cubic-bezier(.37,2,.39,.9); 
     box-shadow: 0 6px 22px #ffe15647;
 }
 .nav-button {
@@ -146,13 +174,13 @@ button {
     filter: brightness(1.11) blur(.2px);
 }
 .back-button {
-    background: #dedfff;
+    background: #e6f0ff; 
     color: var(--main-grad3);
     border: 2.1px solid var(--button-blue);
-    box-shadow: 0 2px 10px #547fff31, 0 0px 2px #bbe1fa70;
+    box-shadow: 0 2px 10px #547fff31;
 }
 .back-button:hover {
-    background: linear-gradient(90deg, #e0e0e0 40%, #bae8ff 90%);
+    background: linear-gradient(90deg, #d3e4ff 40%, #c4e1ff 90%);
     color: #1d267d;
     transform: scale(1.03) translateY(-2.5px);
     box-shadow: 0 7px 25px #5bd1ff41;
@@ -176,55 +204,27 @@ button {
     text-decoration: none;
 }
 .interact-button.roblox {
-    background: linear-gradient(90deg,#6xfe,#3e8cff 80%, #637bff);
+    background: linear-gradient(90deg, #637bff, #3e8cff 80%, #637bff);
     box-shadow: 0 12px 32px #4d7cff61;
 }
 
-body:before {
-    content:'';
-    position: fixed;
-    z-index:-1;
-    left: 0;
-    top:0;
-    width:230px;
-    height:230px;
-    background:radial-gradient(circle at 60% 30%, #ff6dcb48 60%, transparent 100%);
-    filter: blur(40px);
-    opacity:.6;
-    animation: move1 22s linear infinite alternate;
-    pointer-events: none;
-}
-body:after {
-    content:'';
-    position: fixed;
-    right:0; bottom:0;
-    width:210px; height:210px;
-    background:radial-gradient(circle at 80% 65%, #4ae8ff33 65%, transparent 100%);
-    filter: blur(35px);
-    opacity:.5;
-    animation: move2 25s linear infinite alternate;
-    pointer-events: none;
-}
-@keyframes move1 {
-  0% {transform:translateY(0);}
-  100% {transform:translateY(35px) scale(1.07);}
-}
-@keyframes move2 {
-  0% {transform: translateY(0);}
-  100% {transform: translateY(-30px) scale(1.13);}
-}
-
+/* --- WISHLIST DENGAN ANIMASI KHUSUS --- */
 .wishlist {
-    background: rgba(255,255,255,0.87);
+    background: rgba(255,255,255,0.95); 
     border-radius: 20px;
     padding: 24px 26px;
     margin: 20px auto;
     max-width: 420px;
     width: 85%;
     text-align: left;
-    box-shadow: 0 10px 26px #e099ff23, 0 1.5px 3px #fd1d1d60;
+    box-shadow: 0 10px 26px #e099ff4d, 0 1.5px 3px #fd1d1d80;
     border-left: 5px solid var(--button-pink);
     border-bottom: 3.5px solid var(--accent2);
+    animation: wishlist-pop 1.2s ease-out; 
+}
+@keyframes wishlist-pop {
+    0% { opacity: 0; transform: scale(0.8) rotateX(-30deg); }
+    100% { opacity: 1; transform: scale(1) rotateX(0deg); }
 }
 .wishlist ul {
     padding-left: 20px;
@@ -255,16 +255,18 @@ body:after {
     100% {color: #ff4eac; filter: brightness(1.16);}
 }
 
+/* --- FOTO DENGAN PERUBAHAN OBJECT-FIT DAN OBJECT-POSITION --- */
 #fotoDia {
     width: 154px;
     height: 154px;
-    object-fit: cover;
+    object-fit: contain; /* FOTO TIDAK TERPOTONG */
+    object-position: center top; /* FOKUS DI WAJAH (Bagian atas foto) */
     border-radius: 50%;
     margin-bottom: 25px;
     display: none;
     border: 5px solid var(--accent2);
     box-shadow: 0 5px 26px #fa68b666;
-    transition:box-shadow 0.4s;
+    transition: all 0.6s ease-out, box-shadow 0.4s;
     animation: glow 2.5s infinite alternate cubic-bezier(.46,.92,.45,1);
 }
 
@@ -273,31 +275,77 @@ body:after {
     100% { box-shadow: 0 10px 38px #fd1d1d33, 0 0 18px #fa68b666; }
 }
 
+/* --- ELEMEN DEKORASI BACKGROUND --- */
+body:before {
+    content:'';
+    position: fixed;
+    z-index:-1;
+    left: 0;
+    top:0;
+    width:230px;
+    height:230px;
+    background:radial-gradient(circle at 60% 30%, #ff6dcb48 60%, transparent 100%);
+    filter: blur(40px);
+    opacity:.6;
+    animation: move1 22s linear infinite alternate;
+    pointer-events: none;
+}
+body:after {
+    content:'';
+    position: fixed;
+    right:0; bottom:0;
+    width:210px; height:210px;
+    background:radial-gradient(circle at 80% 65%, #4ae8ff33 65%, transparent 100%);
+    filter: blur(35px);
+    opacity:.5;
+    animation: move2 25s linear infinite alternate;
+    pointer-events: none;
+}
+@keyframes move1 {
+ 0% {transform:translateY(0);}
+ 100% {transform:translateY(35px) scale(1.07);}
+}
+@keyframes move2 {
+ 0% {transform: translateY(0);}
+ 100% {transform: translateY(-30px) scale(1.13);}
+}
+
+/* --- MEDIA QUERIES --- */
 @media (max-width: 600px){
     .step {
         padding: 13vw 4vw 8vw 4vw;
         width: 98%;
     }
-    h2 { font-size:1.28rem;}
+    h2 { font-size:1.6rem;}
     .interact-button,.nav-button,button{
-        padding: 10px 14px;
-        font-size:15px;
+        padding: 12px 20px;
+        font-size:16px;
     }
     .wishlist {padding:13px;}
     .wishlist li{font-size:16px;}
-    #fotoDia{width:97px;height:97px;}
+    #fotoDia{width:110px;height:110px;}
+    #cake {width: 120px;}
 }
 </style>
 </head>
 <body>
 
+<script>
+// Variabel untuk usia
+const AGE = 26;
+// Variabel untuk ID Roblox
+const MY_ROBLOX_ID = "FearlessMan"; 
+</script>
+
 <h2>🎁 Ada hadiah spesial buat kamu… coba klik kadonya! 🎁</h2>
+
+<img id="cake" src="kue.gif" alt="Kue Ulang Tahun Animasi">
 
 <img id="box" src="kado.gif" alt="Kotak Kado Animasi">
 
 <audio id="musik" src="happy-birthday.mp3" style="display:none;" loop></audio>
 
-<img id="fotoDia" src="foto-dia.jpg" alt="Foto Ratu Fish-it">
+<img id="fotoDia" src="foto-dia.jpg" alt=""> 
 
 <div id="step1" class="step">
     <h2>✨ Selamat Ulang Tahun, <em>Ratu Fish-it</em> 🎣✨</h2>
@@ -308,7 +356,7 @@ body:after {
       Jangan lupa aku ditraktir somay keliling
     </p>
     <p>
-        Selamat ulang tahun ke-(26)! Semoga kamu sehat selalu, bahagia, dan rezekimu seluas lautan tempat kamu mancing!
+        Selamat ulang tahun ke-<em><script>document.write(AGE);</script></em>! Semoga kamu sehat selalu, bahagia, dan rezekimu seluas lautan tempat kamu mancing!
     </p>
     <button onclick="next('step1','step2')" class="nav-button">Lanjut, jangan <em>skip</em>! 👉</button>
 </div>
@@ -379,10 +427,10 @@ body:after {
     <p>Aku udah siapin umpan paling jitu buat kamu <em>chat</em> duluan. Atau kalau mau mabar <em>fish-it</em> di Roblox, ini ID-ku. <b>Buruan <em>chat</em> deh, jangan bikin aku <em>waiting</em> kayak nungguin ikan gabus makan umpan!</b> 😅</p>
 
     <p>
-            <a href="https://wa.me/6282298180077?text=Oke,%20aku%20udah%20liat%20semua%20blunder%20dan%20script%20kamu.%20Sekarang,%20jelasin%20maksud%20Mata%20Joran%20ini%20dong!" target="_blank" class="interact-button">
+        <a href="https://wa.me/6282298180077?text=Oke,%20aku%20udah%20liat%20semua%20blunder%20dan%20script%20kamu.%20Sekarang,%20jelasin%20maksud%20Mata%20Joran%20ini%20dong!" target="_blank" class="interact-button">
             💬 Jelasin Maksud Mata Joran Ini (Chat WA)
         </a>
-        <button onclick="copyToClipboard('FearlessMan')" id="roblox-btn" class="interact-button roblox">
+        <button onclick="copyToClipboard(MY_ROBLOX_ID)" id="roblox-btn" class="interact-button roblox">
             🎮 Copy ID Robloxku (Mabar Mancing)
         </button>
     </p>
@@ -401,7 +449,7 @@ body:after {
 </div>
 
 <script>
-const MY_ROBLOX_ID = "FearlessMan"; 
+// --- FUNGSI JAVASCRIPT ---
 
 function copyToClipboard(textToCopy) {
     const finalId = document.getElementById('roblox-id') ? document.getElementById('roblox-id').value : textToCopy;
@@ -457,10 +505,14 @@ function fallbackCopyTextToClipboard(text, button, originalText) {
 
 document.getElementById("box").onclick = function() {
     const boxElement = this;
+    const cakeElement = document.getElementById("cake"); 
+
     boxElement.classList.add("fade-out-scale");
+    cakeElement.classList.add("fade-out-scale"); 
     
     setTimeout(() => {
         boxElement.style.display = "none";
+        cakeElement.style.display = "none"; 
         
         document.getElementById("fotoDia").style.display = "block"; 
         document.getElementById("musik").play(); 
