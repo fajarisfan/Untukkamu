@@ -74,7 +74,9 @@ h3 {
     margin-top: 52px;
     margin-bottom: 15px; 
     animation: pulse 1.5s infinite alternate; 
-    transition: all 0.6s ease-out;
+    transition: all 0.6s ease-out, filter 0.6s; 
+    /* NEW: FILTER untuk menyatukan warna kue */
+    filter: hue-rotate(200deg) saturate(1.8) drop-shadow(0 3px 12px #ff4eac90); 
 }
 
 @keyframes pulse {
@@ -255,13 +257,13 @@ button {
     100% {color: #ff4eac; filter: brightness(1.16);}
 }
 
-/* --- FOTO DENGAN PERUBAHAN OBJECT-FIT DAN OBJECT-POSITION --- */
+/* --- FOTO DENGAN FOKUS WAJAH DAN UKURAN LEBIH BESAR --- */
 #fotoDia {
-    width: 154px;
-    height: 154px;
-    object-fit: contain; /* FOTO TIDAK TERPOTONG */
-    object-position: center top; /* FOKUS DI WAJAH (Bagian atas foto) */
-    border-radius: 50%;
+    width: 200px; 
+    height: 200px; 
+    object-fit: cover; 
+    object-position: 50% 15%; 
+    border-radius: 50%; 
     margin-bottom: 25px;
     display: none;
     border: 5px solid var(--accent2);
@@ -323,7 +325,7 @@ body:after {
     }
     .wishlist {padding:13px;}
     .wishlist li{font-size:16px;}
-    #fotoDia{width:110px;height:110px;}
+    #fotoDia{width:150px;height:150px;} 
     #cake {width: 120px;}
 }
 </style>
@@ -346,6 +348,20 @@ const MY_ROBLOX_ID = "FearlessMan";
 <audio id="musik" src="happy-birthday.mp3" style="display:none;" loop></audio>
 
 <img id="fotoDia" src="foto-dia.jpg" alt=""> 
+
+<div id="stepBismillah" class="step">
+    <h2>Bismillahirrahmanirrahim 🤲</h2>
+    <p>Sebelum kita mulai, yuk baca **Basmalah** dulu. Semoga semua ucapan dan doa ini membawa keberkahan dan kebahagiaan untuk <em>Ratu Fish-it</em>!</p>
+    <button onclick="next('stepBismillah','stepThanks')" class="nav-button">Lanjut Membuka Kado 👉</button>
+</div>
+
+<div id="stepThanks" class="step">
+    <h2>🎉 Terima Kasih Telah Membuka Kado! 🎉</h2>
+    <p>Selamat datang di kejutan sederhana ini! Aku harap kamu suka dengan warna-warni dan niat baiknya.</p>
+    <p style="font-style: italic;">Sekarang, mari kita mulai ucapan resminya...</p>
+    <button onclick="next('stepThanks','step1')" class="nav-button">Mulai Ucapan 🥳</button>
+</div>
+
 
 <div id="step1" class="step">
     <h2>✨ Selamat Ulang Tahun, <em>Ratu Fish-it</em> 🎣✨</h2>
@@ -446,7 +462,16 @@ const MY_ROBLOX_ID = "FearlessMan";
     <p>Sudah selesai, <em>Ratu Fish-it</em>! <b>Meskipun <em>clue</em> Mata Joran itu konyol, tapi *spoiler* buat di WA jauh lebih serius!</b> Kalau penasaran, <b>tombol WA di langkah sebelumnya adalah aksesnya.</b> <em>Chat</em> sekarang ya, aku tunggu tebakanmu! 😉</p>
     <p>Tutup halaman ini, atau mau klik kado lagi? Gak ada apa-apa lagi sih, tapi terserah kamu 🤣</p>
     <button onclick="next('step11','step10')" class="back-button"><span>⬅️</span> Kembali ke Tombol WA</button>
+    <button onclick="next('step11','stepAlhamdulillah')" class="nav-button">Penutup 🙏</button>
 </div>
+
+<div id="stepAlhamdulillah" class="step">
+    <h2>Alhamdulillahirabbilalamin ✨</h2>
+    <p>Terima kasih sudah meluangkan waktu untuk kejutan kecil ini. Aku sangat senang kamu mau membacanya sampai akhir.</p>
+    <p style="font-weight: bold; font-style: italic;">Semoga hari ulang tahunmu penuh kebahagiaan dan keberkahan!</p>
+    <p>Sampai jumpa! (dan jangan lupa, aku nunggu chat kamu ya! 😉)</p>
+</div>
+
 
 <script>
 // --- FUNGSI JAVASCRIPT ---
@@ -503,6 +528,7 @@ function fallbackCopyTextToClipboard(text, button, originalText) {
     document.body.removeChild(textArea);
 }
 
+// FUNGSI NAVIGASI STEP
 document.getElementById("box").onclick = function() {
     const boxElement = this;
     const cakeElement = document.getElementById("cake"); 
@@ -517,7 +543,7 @@ document.getElementById("box").onclick = function() {
         document.getElementById("fotoDia").style.display = "block"; 
         document.getElementById("musik").play(); 
         
-        document.getElementById("step1").style.display = "block"; 
+        document.getElementById("stepBismillah").style.display = "block"; 
     }, 600); 
 };
 
@@ -526,6 +552,7 @@ function next(hide, show) {
     document.getElementById(show).style.display = "block";
 }
 
+// SEMBUNYIKAN SEMUA STEP SAAT HALAMAN DILOAD
 document.addEventListener("DOMContentLoaded", function() {
     let steps = document.querySelectorAll('.step');
     steps.forEach(function(el) {
