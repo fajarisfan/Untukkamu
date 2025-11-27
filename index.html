@@ -43,7 +43,7 @@ body {
     100% {background-position: 0 50%;}
 }
 
-/* --- JUDUL & Teks Utama --- */
+/* --- JUDUL & Teks Utama (MODERNISASI: Neon Text Shadow) --- */
 h2 {
     background: linear-gradient(110deg, var(--main-grad2), var(--main-grad3), var(--accent1));
     background-clip: text;
@@ -53,7 +53,8 @@ h2 {
     font-weight: 900;
     letter-spacing: 1.2px;
     font-size: 2.1rem;
-    filter: drop-shadow(0 3px 12px #fff8);
+    /* UPDATE: Mengganti filter drop-shadow lama ke Neon */
+    filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px #ff33c3aa); 
     margin-top: 15px; 
     line-height: 1.2;
 }
@@ -125,11 +126,15 @@ h3 {
     filter: blur(2px) brightness(1.5)!important;
 }
 
-/* --- KOTAK KONTEN (GLASSMORPHISM MURNI) --- */
+/* --- KOTAK KONTEN (GLASSMORPHISM MURNI - MODERNISASI: Bayangan Glow) --- */
 .step {
     display: none;
     background: var(--bg-blur); 
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    /* UPDATE: Mengganti box-shadow lama ke Neon Glow */
+    box-shadow: 0 10px 40px 0 rgba(131, 58, 180, 0.4), 
+                0 0 15px 0 rgba(255, 255, 255, 0.9); 
+    /* UPDATE: Mengganti border tipis ke tebal 0.7 */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
     backdrop-filter: blur(10px) saturate(190%);
     -webkit-backdrop-filter: blur(10px) saturate(190%);
     padding: 32px 8vw; 
@@ -138,7 +143,6 @@ h3 {
     animation: stepin .80s cubic-bezier(.39,1.35,.44,.98);
     max-width: 520px;
     width: 94%;
-    border: 1px solid rgba(255, 255, 255, 0.5);
     border-bottom: 7px solid var(--button-pink);
     position: relative;
     z-index: 2;
@@ -154,8 +158,8 @@ h3 {
     width: 200px; 
     height: 200px; 
     object-fit: cover; 
-    /* Menggeser gambar lebih ke bawah (45% atau 50% untuk mencoba menghilangkan background putih) */
-    object-position: 50% 45%; 
+    /* UPDATE: Mengubah posisi ke 50% 50% untuk tengah sempurna */
+    object-position: 50% 50%; 
     border-radius: 50%; 
     margin-bottom: 25px; 
     display: none; 
@@ -282,7 +286,7 @@ const MY_ROBLOX_ID = "FearlessMan";
 <div id="level1">
     <h2>🍰 Ciee ulang tahun! Kue udah nunggu, buruan tiup lilinnya! 💨🤣</h2>
     <img id="cake" src="kue.gif" alt="Kue Ulang Tahun Animasi">
-    <p id="tiupLilinText" style="color: var(--accent3); font-weight: 700; text-shadow: 0 0 10px #ffe156aa;">Lilinnya ga bakalan mati, GIF soalnya. WKWKWK! 😆</p> 
+    <p id="tiupLilinText" style="color: var(--accent3); font-weight: 700; text-shadow: 0 0 10px #ffe156aa;">Lilinnya ga bakalan mati,soalnya cuma animasi. WKWKWK! 😆</p> 
     <button id="btnTiupLilin" class="nav-button" style="margin-top: 5px;">Pura-pura Tiup (Klik Di Sini) 😉</button> 
 </div>
 
@@ -369,12 +373,13 @@ const MY_ROBLOX_ID = "FearlessMan";
 </div>
 <div id="step7" class="step">
     <h3>Clue Kado: Mata Joran Keberuntungan 🍀</h3>
-    <p>Kado ini adalah <b>barang penting</b> di joran pancing. Bentuknya lingkaran kecil, biasa disebut <b>Mata Joran</b> atau <em>Ring Guide</em>.</p>
+    <p>Kado ini adalah <b>barang penting</b> di joran pancing. Bentuknya lingkaran kecil, biasa disebut **<span style="color: var(--main-grad2); text-shadow: 0 0 7px var(--accent2);">Mata Joran</span>** atau <em>Ring Guide</em>.</p>
     <p>Fungsinya? Biar <b>benang pancing</b> (atau isi dompet kamu 🤫) <b>nggak gampang lepas</b> waktu <em>strike</em> besar! **Tapi yang paling penting, makna dari Mata Joran ini punya *clue* rahasia lain yang harus kamu tebak!** 😉</p>
     <button onclick="next('step7','step6')" class="back-button"><span>⬅️</span> Kembali</button>
     <button onclick="next('step7','step8')" class="nav-button">Lanjut <span>👉</span></button>
 </div>
 <div id="step8" class="step">
+    <img src="panda.gif" alt="Panda Gemoy" style="width: 120px; margin: 15px auto 25px auto; display: block; filter: drop-shadow(0 0 10px #ff336650);">
     <p>Dan… sebenernya aku... suka kamu! Eh, maksudku suka <b>motoran</b> dan <b>kulineran</b>! Kapan-kapan sabi kali, liat pemandangan sambil kulineran, walaupun cuma makan siomay/batagor sambil kasih <em>snack</em> ke kucing jalanan. Tapi kapan, ya? 🥺</p>
     <button onclick="next('step8','step7')" class="back-button"><span>⬅️</span> Kembali</button>
     <button onclick="next('step8','step9')" class="nav-button">Terakhir ➡️</button>
