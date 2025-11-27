@@ -43,7 +43,7 @@ body {
     100% {background-position: 0 50%;}
 }
 
-/* --- JUDUL & Teks Utama (Diperbaiki jaraknya) --- */
+/* --- JUDUL & Teks Utama --- */
 h2 {
     background: linear-gradient(110deg, var(--main-grad2), var(--main-grad3), var(--accent1));
     background-clip: text;
@@ -55,7 +55,6 @@ h2 {
     font-size: 2.1rem;
     filter: drop-shadow(0 3px 12px #fff8);
     margin-top: 15px; 
-    margin-bottom: 10px; /* Lebih rapih */
     line-height: 1.2;
 }
 h3 {
@@ -63,14 +62,14 @@ h3 {
     font-weight: 700;
     font-size: 1.35rem; 
     letter-spacing: 0.7px;
-    margin-bottom: 8px; /* Lebih rapih */
+    margin-bottom: 10px; 
     text-shadow: 0 2px 8px #fff5, 0 1px 3px #ff80d233;
 }
 .step p {
     text-align: center;
-    line-height: 1.7; /* Lebih ringkas dari 1.8 */
-    font-size: 16.5px; /* Lebih ringkas dari 17px */
-    margin-bottom: 15px; /* Lebih ringkas dari 18px */
+    line-height: 1.8; 
+    font-size: 17px;
+    margin-bottom: 18px; 
     letter-spacing: .01em;
 }
 .step em {
@@ -79,12 +78,29 @@ h3 {
     font-style: normal;
 }
 
-/* --- KUE & KADO ANIMASI (tidak berubah) --- */
+/* --- KUE & KADO ANIMASI (Layout level1 & level2 Disamakan) --- */
+#level1, #level2 {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 50px; 
+}
+/* Level 1 (Kue) Order: Judul -> Kue -> Teks Tiup -> Tombol */
+#level1 h2 { order: 1; }
 #cake {
     width: 150px;
     animation: pulse 1.5s infinite alternate; 
     filter: hue-rotate(200deg) saturate(1.8) drop-shadow(0 3px 12px #ff4eac90); 
+    order: 2; 
+    margin-top: 20px; 
 }
+#tiupLilinText { order: 3; margin-top: 10px; }
+#btnTiupLilin { order: 4; margin-top: 15px !important; }
+
+/* Level 2 (Kado) Order: Judul -> Teks Klik -> Kado */
+#level2 h2 { order: 1; }
+#level2 p { order: 2; } /* Teks instruksi di bawah judul */
 #box {
     cursor: pointer;
     margin-top: 15px; 
@@ -93,6 +109,7 @@ h3 {
     box-shadow: 0 15px 35px 0 #d848b680, 0 4px 25px 0 #5beedd60;
     border-radius: 20px; 
     filter: drop-shadow(0 7px 30px #ff4eac85);
+    order: 3; /* Kado di bawah semua */
 }
 @keyframes pulse {
     0% { transform: scale(1); opacity: 0.9; }
@@ -115,9 +132,9 @@ h3 {
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(10px) saturate(190%);
     -webkit-backdrop-filter: blur(10px) saturate(190%);
-    padding: 30px 6vw; /* Padding disesuaikan */
-    border-radius: 20px; /* Radius lebih kecil, lebih rapi */
-    margin-top: 24px; /* Margin disesuaikan */
+    padding: 32px 8vw; 
+    border-radius: 24px; 
+    margin-top: 26px; 
     animation: stepin .80s cubic-bezier(.39,1.35,.44,.98);
     max-width: 520px;
     width: 94%;
@@ -132,15 +149,15 @@ h3 {
     to {opacity:1; transform: translateY(0) scale(1);}
 }
 
-/* --- FOTO KHUSUS --- */
+/* --- FOTO KHUSUS (object-position Disesuaikan) --- */
 #fotoDia {
     width: 200px; 
     height: 200px; 
     object-fit: cover; 
-    /* Sesuaikan nilai 30% ini. Jika wajah terlalu tinggi/rendah, ganti ke 25% atau 35% */
-    object-position: 50% 30%; 
+    /* Menggeser gambar lebih ke bawah (45% atau 50% untuk mencoba menghilangkan background putih) */
+    object-position: 50% 45%; 
     border-radius: 50%; 
-    margin-bottom: 20px; /* Margin dikurangi */
+    margin-bottom: 25px; 
     display: none; 
     border: 6px solid var(--accent2); 
     box-shadow: 0 5px 26px #fa68b666;
@@ -183,12 +200,12 @@ button {
 .interact-button {
     background: linear-gradient(88deg, var(--accent1), var(--button-pink), var(--main-grad2));
     padding: 15px 30px;
-    margin: 10px auto; /* Margin vertikal lebih besar, dan di tengah */
+    margin: 10px auto; 
     border-radius: 30px;
     box-shadow: 0 10px 22px #ff4eac45;
     color: #fff;
-    display: block; /* Tombol WA/Roblox dipaksa menjadi block/baris sendiri */
-    width: fit-content; /* Lebar hanya sesuai konten */
+    display: block; 
+    width: fit-content;
     text-decoration: none;
     align-items: center;
 }
@@ -196,11 +213,11 @@ button {
     background: linear-gradient(90deg, #637bff, #3e8cff 80%, #637bff);
     box-shadow: 0 12px 32px #4d7cff61;
 }
-/* Style Wishlist diperbaiki agar lebih rapi */
+/* Style Wishlist */
 .wishlist-container {
     background: rgba(255,255,255,0.85); 
     border-radius: 20px;
-    padding: 20px 22px; /* Padding dikurangi */
+    padding: 24px 26px; 
     margin: 20px auto;
     max-width: 420px;
     width: 85%;
@@ -215,11 +232,11 @@ button {
     list-style: none;
 }
 .wishlist-container li {
-    margin: 9px 0; /* Margin antar list item dikurangi */
-    font-size: 16.5px;
+    margin: 11px 0;
+    font-size: 17.2px;
     padding-left: 29px;
     position: relative;
-    line-height: 1.5;
+    line-height: 1.6;
     font-weight: 500;
 }
 .wishlist-container li::before {
@@ -230,7 +247,6 @@ button {
     animation: wish-glow .9s alternate infinite cubic-bezier(.59,2,0,0.3);
     font-size: 1.05em;
 }
-/* Animasi baru untuk wishlist */
 @keyframes wish-glow {
     0% { transform: scale(1); opacity: 0.8; }
     100% { transform: scale(1.15); opacity: 1; }
@@ -243,7 +259,7 @@ button {
 /* --- MEDIA QUERIES --- */
 @media (max-width: 600px){
     .step {
-        padding: 8vw 4vw; /* Padding lebih proporsional */
+        padding: 10vw 4vw 8vw 4vw; 
         width: 98%;
     }
     h2 { font-size:1.6rem;}
@@ -252,9 +268,6 @@ button {
         font-size:16px;
     }
     #fotoDia{width:150px;height:150px;} 
-    .wishlist-container {
-        padding: 18px;
-    }
 }
 </style>
 </head>
@@ -493,7 +506,7 @@ document.getElementById("btnTiupLilin").onclick = function() {
 
     setTimeout(() => {
         level1.style.display = "none";
-        level2.style.display = "flex";
+        level2.style.display = "flex"; // Level 2 dibuat tampil
         
         level2.classList.remove("fade-out-scale"); 
     }, 600); 
