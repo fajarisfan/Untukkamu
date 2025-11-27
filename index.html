@@ -16,8 +16,8 @@
     --accent3: #ffe156; /* Kuning */
     --button-pink: #ff4eac;
     --button-blue: #3e8cff;
-    --shadow: 0 10px 25px 0 rgba(39, 29, 109,0.13);
     --text-color: #25203a;
+    --bg-blur: rgba(255, 255, 255, 0.45); 
 }
 
 /* --- BACKGROUND ANIMASI UTAMA --- */
@@ -35,6 +35,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    overflow-x: hidden;
 }
 @keyframes gradient-move {
     0% {background-position: 0 50%;}
@@ -42,7 +43,7 @@ body {
     100% {background-position: 0 50%;}
 }
 
-/* --- JUDUL & Teks Utama --- */
+/* --- JUDUL & Teks Utama (Diperbaiki jaraknya) --- */
 h2 {
     background: linear-gradient(110deg, var(--main-grad2), var(--main-grad3), var(--accent1));
     background-clip: text;
@@ -50,26 +51,26 @@ h2 {
     color: transparent;
     -webkit-text-fill-color: transparent;
     font-weight: 900;
-    margin-bottom: 18px;
     letter-spacing: 1.2px;
     font-size: 2.1rem;
     filter: drop-shadow(0 3px 12px #fff8);
-    text-shadow: 0 1px 7px #fff3;
     margin-top: 15px; 
+    margin-bottom: 10px; /* Lebih rapih */
+    line-height: 1.2;
 }
 h3 {
     color: var(--button-pink);
     font-weight: 700;
     font-size: 1.35rem; 
     letter-spacing: 0.7px;
-    margin-bottom: 10px;
+    margin-bottom: 8px; /* Lebih rapih */
     text-shadow: 0 2px 8px #fff5, 0 1px 3px #ff80d233;
 }
 .step p {
     text-align: center;
-    line-height: 1.7;
-    font-size: 16.3px;
-    margin-bottom: 15px;
+    line-height: 1.7; /* Lebih ringkas dari 1.8 */
+    font-size: 16.5px; /* Lebih ringkas dari 17px */
+    margin-bottom: 15px; /* Lebih ringkas dari 18px */
     letter-spacing: .01em;
 }
 .step em {
@@ -78,13 +79,7 @@ h3 {
     font-style: normal;
 }
 
-/* --- LEVEL KUE & KADO --- */
-#level1, #level2 {
-    display: flex; 
-    flex-direction: column; 
-    align-items: center;
-    transition: all 0.6s ease-out; 
-}
+/* --- KUE & KADO ANIMASI (tidak berubah) --- */
 #cake {
     width: 150px;
     animation: pulse 1.5s infinite alternate; 
@@ -93,7 +88,7 @@ h3 {
 #box {
     cursor: pointer;
     margin-top: 15px; 
-    animation: float 2.1s infinite alternate cubic-bezier(.41,.78,.55,.97), hueRotate 6s infinite linear;
+    animation: float 2.1s infinite alternate cubic-bezier(.41,.78,.55,.97);
     width: 220px; 
     box-shadow: 0 15px 35px 0 #d848b680, 0 4px 25px 0 #5beedd60;
     border-radius: 20px; 
@@ -113,22 +108,21 @@ h3 {
     filter: blur(2px) brightness(1.5)!important;
 }
 
-/* --- KOTAK KONTEN (GLASSMORPHISM) --- */
+/* --- KOTAK KONTEN (GLASSMORPHISM MURNI) --- */
 .step {
     display: none;
-    background: rgba(255, 255, 255, 0.4); 
+    background: var(--bg-blur); 
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(8px) saturate(180%);
-    -webkit-backdrop-filter: blur(8px) saturate(180%);
-    padding: 32px 8vw;
-    border-radius: 24px;
-    margin-top: 26px;
+    backdrop-filter: blur(10px) saturate(190%);
+    -webkit-backdrop-filter: blur(10px) saturate(190%);
+    padding: 30px 6vw; /* Padding disesuaikan */
+    border-radius: 20px; /* Radius lebih kecil, lebih rapi */
+    margin-top: 24px; /* Margin disesuaikan */
     animation: stepin .80s cubic-bezier(.39,1.35,.44,.98);
-    text-align: center;
     max-width: 520px;
     width: 94%;
-    border: 1px solid rgba(255, 255, 255, 0.3); 
-    border-bottom: 6.8px solid var(--button-pink); 
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 7px solid var(--button-pink);
     position: relative;
     z-index: 2;
     color: #000; 
@@ -143,14 +137,16 @@ h3 {
     width: 200px; 
     height: 200px; 
     object-fit: cover; 
-    object-position: 50% 15%; 
+    /* Sesuaikan nilai 30% ini. Jika wajah terlalu tinggi/rendah, ganti ke 25% atau 35% */
+    object-position: 50% 30%; 
     border-radius: 50%; 
-    margin-bottom: 25px;
+    margin-bottom: 20px; /* Margin dikurangi */
     display: none; 
-    border: 5px solid var(--accent2);
+    border: 6px solid var(--accent2); 
     box-shadow: 0 5px 26px #fa68b666;
     animation: glow 2.5s infinite alternate cubic-bezier(.46,.92,.45,1);
 }
+
 @keyframes glow {
     0% { box-shadow: 0 7px 22px #ffccdd93; }
     100% { box-shadow: 0 10px 38px #fd1d1d33, 0 0 18px #fa68b666; }
@@ -174,6 +170,10 @@ button {
     box-shadow: 0 9px 25px #ff6bcb60;
     border-bottom: 4px solid var(--main-grad2);
 }
+.nav-button:hover, .interact-button:hover {
+    transform: scale(1.05) translateY(-3px) skewX(-1deg);
+    box-shadow: 0 12px 28px #ea54dd58, 0 1px 22px #1ee7ff45;
+}
 .back-button {
     background: #e6f0ff; 
     color: var(--main-grad3);
@@ -183,19 +183,79 @@ button {
 .interact-button {
     background: linear-gradient(88deg, var(--accent1), var(--button-pink), var(--main-grad2));
     padding: 15px 30px;
-    margin: 8px 4px; 
+    margin: 10px auto; /* Margin vertikal lebih besar, dan di tengah */
     border-radius: 30px;
     box-shadow: 0 10px 22px #ff4eac45;
     color: #fff;
-    display: inline-flex;
+    display: block; /* Tombol WA/Roblox dipaksa menjadi block/baris sendiri */
+    width: fit-content; /* Lebar hanya sesuai konten */
+    text-decoration: none;
+    align-items: center;
 }
 .interact-button.roblox {
     background: linear-gradient(90deg, #637bff, #3e8cff 80%, #637bff);
     box-shadow: 0 12px 32px #4d7cff61;
 }
-/* --- WISH LIST STYLE (diabaikan karena terlalu banyak diulang di style section) --- */
+/* Style Wishlist diperbaiki agar lebih rapi */
+.wishlist-container {
+    background: rgba(255,255,255,0.85); 
+    border-radius: 20px;
+    padding: 20px 22px; /* Padding dikurangi */
+    margin: 20px auto;
+    max-width: 420px;
+    width: 85%;
+    text-align: left;
+    box-shadow: 0 10px 26px #e099ff4d, 0 1.5px 3px #fd1d1d80;
+    border-left: 5px solid var(--button-pink);
+    border-bottom: 3.5px solid var(--accent2);
+    animation: wishlist-pop 1.2s ease-out; 
+}
+.wishlist-container ul {
+    padding-left: 20px;
+    list-style: none;
+}
+.wishlist-container li {
+    margin: 9px 0; /* Margin antar list item dikurangi */
+    font-size: 16.5px;
+    padding-left: 29px;
+    position: relative;
+    line-height: 1.5;
+    font-weight: 500;
+}
+.wishlist-container li::before {
+    content: '⭐';
+    position: absolute;
+    left: 2px;
+    top: 1.3px;
+    animation: wish-glow .9s alternate infinite cubic-bezier(.59,2,0,0.3);
+    font-size: 1.05em;
+}
+/* Animasi baru untuk wishlist */
+@keyframes wish-glow {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.15); opacity: 1; }
+}
+@keyframes wishlist-pop {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
 
-/* --- MEDIA QUERIES (diabaikan karena terlalu banyak diulang di style section) --- */
+/* --- MEDIA QUERIES --- */
+@media (max-width: 600px){
+    .step {
+        padding: 8vw 4vw; /* Padding lebih proporsional */
+        width: 98%;
+    }
+    h2 { font-size:1.6rem;}
+    .interact-button,.nav-button,button{
+        padding: 12px 20px;
+        font-size:16px;
+    }
+    #fotoDia{width:150px;height:150px;} 
+    .wishlist-container {
+        padding: 18px;
+    }
+}
 </style>
 </head>
 <body>
@@ -209,7 +269,7 @@ const MY_ROBLOX_ID = "FearlessMan";
 <div id="level1">
     <h2>🍰 Ciee ulang tahun! Kue udah nunggu, buruan tiup lilinnya! 💨🤣</h2>
     <img id="cake" src="kue.gif" alt="Kue Ulang Tahun Animasi">
-    <p id="tiupLilinText" style="color: var(--accent3); font-weight: 700; text-shadow: 0 0 10px #ffe156aa;">Lilinnya ga bakalan mati, animasi soalnya. WKWKWK! 😆</p> 
+    <p id="tiupLilinText" style="color: var(--accent3); font-weight: 700; text-shadow: 0 0 10px #ffe156aa;">Lilinnya ga bakalan mati, GIF soalnya. WKWKWK! 😆</p> 
     <button id="btnTiupLilin" class="nav-button" style="margin-top: 5px;">Pura-pura Tiup (Klik Sini) 😉</button> 
 </div>
 
@@ -226,7 +286,7 @@ const MY_ROBLOX_ID = "FearlessMan";
 
 <div id="stepBismillah" class="step">
     <p style="font-size: 1.5rem; font-weight: 900; color: var(--main-grad3);">Bismillahirrahmanirrahim 🤲</p>
-    <p>Sebelum kita mulai, yuk baca **Bismillahirrahmanirrahim** dulu. Semoga semua ucapan dan doa ini membawa keberkahan dan kebahagiaan untuk <em>Ratu Fish-it</em>!</p>
+    <p>Sebelum kita mulai, yuk baca **Basmalah** dulu. Semoga semua ucapan dan doa ini membawa keberkahan dan kebahagiaan untuk <em>Ratu Fish-it</em>!</p>
     <button onclick="next('stepBismillah','stepIntro')" class="nav-button">Lanjut Membaca Pesan 👉</button>
 </div>
 
@@ -237,8 +297,8 @@ const MY_ROBLOX_ID = "FearlessMan";
     </p>
     <p style="text-align: left; background: rgba(255,255,255,0.8); padding: 15px; border-radius: 12px; margin: 15px auto; max-width: 350px; font-size: 15px; border-left: 4px solid var(--button-pink); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
         **Nama Panggilan:** Fish-it Queen, Ratu Empang.<br>
-        **Hobi:** Bikin status absurd, mancing gatau waktu :v<br>
-        **Ciri Khas:** Selalu <em>overthinking</em> tapi punya <em>story</em> paling absurd di ig.
+        **Hobi:** Nyinyirin status teman, mancing tengah malam.<br>
+        **Ciri Khas:** Selalu <em>overthinking</em> tapi punya <em>story</em> paling absurd di WA.
     </p>
     <p>
         Coba lihat, benar ini orangnya? 👇
@@ -309,13 +369,13 @@ const MY_ROBLOX_ID = "FearlessMan";
 <div id="step9" class="step">
     <h3>🎁 Wishlist Rahasia Ratu Fish-it 📝</h3>
     <p>Aku tahu kamu punya cita-cita jadi Selebgram Food Vlogger. Semoga semua harapanmu tercapai!</p>
-    <div style="background: rgba(255,255,255,0.95); border-radius: 20px; padding: 24px; margin: 20px auto; max-width: 420px; width: 85%; text-align: left; box-shadow: 0 10px 26px #e099ff4d, 0 1.5px 3px #fd1d1d80;">
-        <ul style="padding-left: 20px; list-style: none;">
-            <li style="margin: 11px 0; padding-left: 29px; position: relative;"><b>Waktu tidur cukup</b> (biar gak <em>cranky</em>).</li>
-            <li style="margin: 11px 0; padding-left: 29px; position: relative;">Bisa liburan atau <em>staycation</em> sambil <b>kulineran pedas</b>.</li>
-            <li style="margin: 11px 0; padding-left: 29px; position: relative;"><b>Makin sukses jadi Food Vlogger,</b> cepat dapat <em>endorse</em>.</li>
-            <li style="margin: 11px 0; padding-left: 29px; position: relative;">Punya <b>kamera/gear</b> yang <em>high quality</em>.</li>
-            <li style="margin: 11px 0; padding-left: 29px; position: relative;">Mendapat <b>Jutaan <em>followers</em> setia</b>.</li>
+    <div class="wishlist-container">
+        <ul>
+            <li><b>Waktu tidur cukup</b> (biar gak <em>cranky</em>).</li>
+            <li>Bisa liburan atau <em>staycation</em> sambil <b>kulineran pedas</b>.</li>
+            <li><b>Makin sukses jadi Food Vlogger,</b> cepat dapat <em>endorse</em>.</li>
+            <li>Punya <b>kamera/gear</b> yang <em>high quality</em>.</li>
+            <li>Mendapat <b>Jutaan <em>followers</em> setia</b>.</li>
         </ul>
     </div>
     <p style="font-style: italic; margin-top: 15px;">Anggap aja kado kecilnya ini seperti <em>reel</em> cadangan yang siap dipasang kapan saja 😉</p>
@@ -359,22 +419,18 @@ const MY_ROBLOX_ID = "FearlessMan";
 <script>
 // --- FUNGSI JAVASCRIPT ---
 
-// Fungsi untuk mengontrol visibility foto dan musik (Musik tetap ON setelah dinyalakan)
 function toggleFoto(show) {
     const foto = document.getElementById("fotoDia");
     const musik = document.getElementById("musik");
 
     if (show) {
         foto.style.display = "block";
-        // Coba putar musik. Jika sudah berjalan, tidak ada efek samping.
         musik.play().catch(e => console.log('Musik belum bisa dimainkan otomatis: ', e));
     } else {
         foto.style.display = "none";
-        // Musik TIDAK DIHENTIKAN agar tetap mengiringi di background
     }
 }
 
-// Fungsi copy to clipboard (untuk ID Roblox)
 function copyToClipboard(textToCopy) {
     const finalId = document.getElementById('roblox-id') ? document.getElementById('roblox-id').value : textToCopy;
     const button = document.getElementById('roblox-btn');
@@ -423,14 +479,12 @@ function fallbackCopyTextToClipboard(text, button, originalText) {
     document.body.removeChild(textArea);
 }
 
-// Transisi umum
 function next(hide, show) {
     document.getElementById(hide).style.display = "none";
     document.getElementById(show).style.display = "block";
 }
 
 
-// --- FUNGSI TRANSLASI LEVEL 1 KE LEVEL 2 (TIUP LILIN KE KADO) ---
 document.getElementById("btnTiupLilin").onclick = function() {
     const level1 = document.getElementById("level1");
     const level2 = document.getElementById("level2");
@@ -439,14 +493,13 @@ document.getElementById("btnTiupLilin").onclick = function() {
 
     setTimeout(() => {
         level1.style.display = "none";
-        level2.style.display = "flex"; // Tampilkan Kado
+        level2.style.display = "flex";
         
         level2.classList.remove("fade-out-scale"); 
     }, 600); 
 };
 
 
-// --- FUNGSI TRANSLASI LEVEL 2 KE STEP BISMILLAH (KLIK KADO) ---
 document.getElementById("box").onclick = function() {
     const level2 = document.getElementById("level2");
 
@@ -454,27 +507,21 @@ document.getElementById("box").onclick = function() {
     
     setTimeout(() => {
         level2.style.display = "none";
-        
-        // Tampilkan Step Bismillah
         document.getElementById("stepBismillah").style.display = "block"; 
     }, 600); 
 };
 
 
-// SEMBUNYIKAN SEMUA STEP SAAT HALAMAN DILOAD
 document.addEventListener("DOMContentLoaded", function() {
     let steps = document.querySelectorAll('.step');
     steps.forEach(function(el) {
         el.style.display = 'none';
     });
-    // Pastikan level 2 (kado) tersembunyi
     document.getElementById("level2").style.display = 'none';
-    // Level 1 (kue) tetap tampil
     document.getElementById("level1").style.display = 'flex'; 
-    // Pastikan foto tersembunyi dan musik mati di awal
     toggleFoto(false); 
     document.getElementById("musik").pause();
-    document.getElementById("musik").currentTime = 0; // Reset musik
+    document.getElementById("musik").currentTime = 0;
 });
 </script>
 
