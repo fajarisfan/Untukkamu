@@ -95,7 +95,7 @@ h3 {
     order: 2; 
     margin-top: 20px; 
 }
-/* BARU: Lilin Mati */
+/* Lilin Mati */
 #cake-off {
     width: 150px;
     filter: hue-rotate(200deg) saturate(1.8) drop-shadow(0 3px 12px #ff4eac90); 
@@ -163,7 +163,7 @@ h3 {
     width: 200px; 
     height: 200px; 
     object-fit: cover; 
-    /* PERBAIKAN: Menggeser subjek ke atas 5% agar terpusat di bingkai lingkaran */
+    /* Diatur untuk foto yang dikirim (ditarik sedikit ke atas) */
     object-position: 50% 45%; 
     border-radius: 50%; 
     margin-bottom: 25px; 
@@ -293,7 +293,7 @@ const MY_ROBLOX_ID = "FearlessMan";
     <img id="cake" src="kue.gif" alt="Kue Ulang Tahun Animasi">
     <img id="cake-off" src="kue-mati.png" alt="Kue Ulang Tahun Tanpa Api" style="width: 150px; display: none; filter: hue-rotate(200deg) saturate(1.8) drop-shadow(0 3px 12px #ff4eac90); order: 2; margin-top: 20px;">
     
-    <p id="tiupLilinText" style="color: var(--accent3); font-weight: 700; text-shadow: 0 0 10px #ffe156aa;">Lilinnya ga bakalan mati,soalnya cuma animasi. WKWKWK! 😆</p> 
+    <p id="tiupLilinText" style="color: var(--accent3); font-weight: 700; text-shadow: 0 0 10px #ffe156aa;">Lilinnya ga bakalan mati, GIF soalnya. WKWKWK! 😆</p> 
     <button id="btnTiupLilin" class="nav-button" style="margin-top: 5px;">Pura-pura Tiup (Klik Di Sini) 😉</button> 
 </div>
 
@@ -311,8 +311,19 @@ const MY_ROBLOX_ID = "FearlessMan";
 <div id="stepBismillah" class="step">
     <p style="font-size: 1.5rem; font-weight: 900; color: var(--main-grad3);">Bismillahirrahmanirrahim 🤲</p>
     <p>Sebelum kita mulai, yuk baca Bismillahirrahmanirrahim  dulu. Semoga semua ucapan dan doa ini membawa keberkahan dan kebahagiaan untuk <em>Ratu Fish-it</em>!</p>
-    <button onclick="next('stepBismillah','stepIntro')" class="nav-button">Lanjut Membaca Pesan 👉</button>
+    <button onclick="next('stepBismillah','stepEmpati')" class="nav-button">Lanjut Membaca Pesan 👉</button>
 </div>
+
+<div id="stepEmpati" class="step">
+    <h3>🙏 Doa untuk Ranah Minang (Kampung Halaman) 🙏</h3>
+    <p>Aku tahu kamu sekarang di Cilegon, tapi kampung halamanmu di Sumatera Barat, tempat keluarga besarmu, sedang menghadapi musibah.</p>
+    <p style="font-weight: bold; color: var(--main-grad2); font-size: 1.1em; margin: 15px 0;">
+        <span style="border-bottom: 3px dashed var(--main-grad2);">Semoga kekuatan selalu menyertai keluargamu.</span>
+    </p>
+    <p>Di hari spesialmu ini, semoga kamu yang di Cilegon tetap kuat dan selalu mendoakan yang terbaik untuk mereka di sana. Kami semua mendoakan agar musibah ini segera berlalu dan membawa keberkahan. Jangan sedih ya.</p>
+    <button onclick="next('stepEmpati','stepIntro')" class="nav-button">Aku Butuh Senyum, Lanjut 🥺👉</button>
+</div>
+
 
 <div id="stepIntro" class="step">
     <h2>🤔 Mana Nih, Yang Ulang Tahun?</h2>
@@ -320,9 +331,9 @@ const MY_ROBLOX_ID = "FearlessMan";
         Sesuai data algoritma media sosial, hari ini adalah hari spesial untuk seorang <b>Ratu Fish-it</b>.
     </p>
     <p style="text-align: left; background: rgba(255,255,255,0.8); padding: 15px; border-radius: 12px; margin: 15px auto; max-width: 350px; font-size: 15px; border-left: 4px solid var(--button-pink); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-        **Nama Panggilan:Banyak kayanya,tapi <em>queen</em> aja lah ya.<br>
-        **Hobi:Gatau baru taunya ini, mancing,nonton drakor.<br>
-        **Ciri Khas:katanya sih <em>introvert</em> tapi punya <em>story</em> paling absurd di instagram.
+        Nama Panggilan:Banyak kayanya,tapi <em>Queen</em> aja lah ya karna kamu selalu spesial.<br>
+        Hobi:Gatau baru taunya ini,<em>mancing</em>,nonton drakor.<br>
+        Ciri Khas:katanya sih <em>introvert</em> tapi punya <em>story</em> paling absurd di instagram.
     </p>
     <p>
         Coba lihat, benar ini orangnya? 👇
@@ -347,13 +358,13 @@ const MY_ROBLOX_ID = "FearlessMan";
       Jangan lupa aku ditraktir somay keliling
     </p>
     <p>
-        Selamat ulang tahun ke-<em><script>document.write(AGE);</script></em>! Semoga kamu sehat selalu, bahagia, dan rezekimu seluas lautan tempat kamu mancing!
+        Selamat ulang tahun ke- 26 kan ya kalo gasalah<em><script>document.write(AGE);</script></em>! Semoga kamu sehat selalu, bahagia, dan rezekimu seluas lautan tempat kamu mancing!
     </p>
     <button onclick="toggleFoto(true); next('step1','step2')" class="nav-button">Lanjut, jangan <em>skip</em>! 👉</button>
 </div>
 
 <div id="step2" class="step">
-    <p>**Eh, fotonya nongol lagi!** Ini dia alasannya: Aku masukin foto kamu di sini ya, tadinya mau klik tambahkan teman tapi akunnya udah lama ga disentuh. Foto ini dari algoritma Facebook karena dia tahu siapa yang sering dicariin dan dipikirin 😅 Jangan marah, niatnya cuma biar momen ini kerasa lebih spesial.</p>
+    <p>Eh, fotonya nongol lagi Ini dia alasannya: Aku masukin foto kamu di sini ya, tadinya mau klik tambahkan teman tapi akunnya udah lama ga disentuh. Foto ini dari algoritma Facebook karena dia tahu siapa yang sering dicariin dan dipikirin 😅 Jangan marah, niatnya cuma biar momen ini kerasa lebih spesial.</p>
     <button onclick="toggleFoto(false); next('step2','step1')" class="back-button"><span>⬅️</span> Kembali</button>
     <button onclick="toggleFoto(false); next('step2','step3')" class="nav-button">Lanjut <span>👉</span></button>
 </div>
@@ -388,19 +399,19 @@ const MY_ROBLOX_ID = "FearlessMan";
 
 <div id="step8" class="step">
     <img src="panda.gif" alt="Panda Gemoy" style="width: 120px; margin: 15px auto 25px auto; display: block; filter: drop-shadow(0 0 10px #ff336650);">
-    <p>Dan… sebenernya aku... suka kamu! Eh, maksudku suka <b>motoran</b> dan <b>kulineran</b>! Kapan-kapan sabi kali, liat pemandangan sambil kulineran, walaupun cuma makan siomay/batagor sambil kasih <em>snack</em> ke kucing jalanan. Tapi kapan, ya? 🥺</p>
+    <p>Dan… sebenernya aku... suka kamu! Eh, maksudku suka <b>motoran</b> dan <b>kulineran</b>! Kapan-kapan sabi kali, liat pemandangan sambil kulineran atau apapun itu, walaupun cuma makan siomay/batagor sambil kasih <em>snack</em> ke kucing jalanan. Tapi kapan, ya? 🥺</p>
     <button onclick="next('step8','step7')" class="back-button"><span>⬅️</span> Kembali</button>
     <button onclick="next('step8','step9')" class="nav-button">Terakhir ➡️</button>
 </div>
 <div id="step9" class="step">
     <h3>🎁 Wishlist Rahasia Ratu Fish-it 📝</h3>
-    <p>Aku tahu kamu punya cita-cita jadi Selebgram Food Vlogger. Semoga semua harapanmu tercapai!</p>
+    <p>Aku tahu kamu punya cita-cita jadi selebgram food vlogger. Semoga semua harapanmu tercapai!</p>
     <div class="wishlist-container">
         <ul>
             <li><b>Waktu tidur cukup</b> (biar gak <em>cranky</em>).</li>
             <li>Bisa liburan ke pantai atau <em>staycation</em> sambil <b>kulineran pedas</b>.</li>
             <li><b>Makin sukses jadi Food Vlogger,</b> cepat dapat <em>endorse</em>.</li>
-            <li>Semakin <b>Produktif</b> dan <em>ga ilang ilangan eh bukan saya ya yang ulang tahun</em>.</li>
+            <li>Semakin <b>Produktif</b> dan <em>jangan ilang ilangan lagi ya kalo mau cerita bilang aja saya siap jadi pendengar</em>.</li>
             <li>Mendapat <b>Jutaan <em>followers</em> setia contohnya saya canda wkwkwk</b>.</li>
         </ul>
     </div>
@@ -437,7 +448,11 @@ const MY_ROBLOX_ID = "FearlessMan";
 <div id="stepAlhamdulillah" class="step">
     <h2>Alhamdulillahirabbilalamin ✨</h2>
     <p>Terima kasih sudah meluangkan waktu untuk kejutan kecil ini. Aku sangat senang kamu mau membacanya sampai akhir.</p>
-    <p style="font-weight: bold; font-style: italic;">Semoga hari ulang tahunmu penuh kebahagiaan dan keberkahan!</p>
+    <p style="font-weight: bold; font-style: italic; margin-top: 15px;">
+        Semoga Allah SWT selalu melimpahkan berkah dan kebahagiaan di usia barumu ini,
+        serta memberikan **kekuatan** dan **kesabaran** untuk menghadapi segala cobaan yang menimpa kampung halamanmu.
+        Amin Ya Rabbal Alamin.
+    </p>
     <p>Sampai jumpa! (dan jangan lupa, aku nunggu chat kamu ya! 😉)</p>
 </div>
 
